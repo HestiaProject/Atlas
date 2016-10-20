@@ -1,0 +1,11 @@
+Leituras Mandatorias:
+
+- "Feature-Oriented Domain Analysis (FODA) Feasibility Study" - Kang - http://www.sei.cmu.edu/reports/90tr021.pdf - Secao 5
+- "SPL Intro for Hestia" - Laser - /Documentos
+- "AtlasSPL - A Web-Based Tool for Feature Modeling" - Laser, Rodrigues, Martins, Oliveira - /ArtigosPublicados
+
+Leituras Recomendadas:
+
+- "Software Architecture - Foundations, Theory and Practice" - Taylor, Medvidovic, Dashofy - Capitulo 1
+- "Feature-Oriented Software Product Lines - Concepts and Implementation" - Apel, Batory, Kastner, Saake - Secao 2.3
+- "Generative Programming - Methods, Tools, and Applications" - Czarnecki, Eisenecker - Capitulo 4

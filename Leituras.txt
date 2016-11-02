@@ -9,3 +9,4 @@ Leituras Recomendadas:
 - "Software Architecture - Foundations, Theory and Practice" - Taylor, Medvidovic, Dashofy - Capitulo 1
 - "Feature-Oriented Software Product Lines - Concepts and Implementation" - Apel, Batory, Kastner, Saake - Secao 2.3
 - "Generative Programming - Methods, Tools, and Applications" - Czarnecki, Eisenecker - Capitulo 4
+- "Software Product Lines: Practices and Patterns" - Clements, Northrop - Capítulo 1

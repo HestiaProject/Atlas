@@ -1,0 +1,35 @@
+\chapter{Requirements and Design Decisions}
+\label{chap:requirements}
+
+Building on the objectives presented in Chapter \ref{chap:background}, this chapter presents the requirements elicited and design decisions taken in the Atlas project. As with any architecture-centric software project, it is important to note that the requirements and design decisions are subject to change over the course of the project \cite{TAYLOR:2009}.
+
+%----------------------------------------------
+
+\section{Solution Requirements}
+
+The requirements, as of December 9th, 2016, in accordance with the currently established goals and with a strong basis on the experiences drawn from the first instance of Atlas \cite{LASER:2015b}, are as follows:
+
+\begin{itemize}
+    \item RQ01: The proposed solution must be Web-based, so as to be readily accessible in different environments without the need for installation or preparation of the environment;
+    \item RQ02: The proposed solution must make use exclusively of open-source and free technology, so as to be costless as an education solution, given the possible lack of resources that a student or institution may have to dispose of in this field;
+    \item RQ03: The proposed solution must present an user interface that requires little effort to understand. This effort will be measured with qualitative evaluations and further research of Human-Computer Interaction standards;
+    \item RQ04: The proposed solution must be extensible to allow for the support of new feature model notations;
+    \item RQ05: The proposed solution must be extensible to allow for the support of feature model notation conversions, based on the commonalities and peculiarities of different notations, in order for users to more easily visualize these commonalities and peculiarities and identify the relationships between different notations;
+    \item RQ06: The architecture of the proposed solution must follow well-defined architectural styles and patterns, so as to have an easily accessible documentation to anyone with knowledge of software architecture;
+    \item RQ07: The proposed solution must dispose of a feature model validation system, linked to each of the available notations, in order to permit the rapid identification of flaws and assist in self-teaching scenarios;
+    \item RQ08: The proposed solution must include a data persistence system to maintain a repository of feature models accessible to the public;
+    \item RQ09: There must exist a set of publicly available tutorials and a manual to the tool, as well as publicly available architectural documentation and code, so as to disseminate its use and facilitate its adoption.
+\end{itemize}
+
+The requirements so far listed can be taken as general requirements, believed by the authors to be the basic foundation to any feature modeling tool that is intended as educational. In addition to these, the following requirements are raised specifically for Atlas, in order to prepare it for later assimilation within the Olympus environment:
+
+\begin{itemize}
+    \item RQ10: The proposed solution must be designed in a modular manner, with well-specified interfaces and communication protocols, in order to be easily adaptable to operate within larger software environments;
+    \item RQ11: The proposed solution must function independently, being possible to instantiate and operate it without the need for other, third-party tools.
+\end{itemize}
+
+%----------------------------------------------
+
+\section{Project Design Decisions}
+
+The previous section presented the elicited requirements that the authors believe are essential both to a general feature modeling educational tool and to the specific needs of a tool integrated within a larger software environment. This section presents the design decisions specific to this project, which will be taken in the design and implementation of Atlas to meet the presented requirements.

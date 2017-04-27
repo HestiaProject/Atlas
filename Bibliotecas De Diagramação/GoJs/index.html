@@ -20,6 +20,7 @@ Date: 2017
           "LinkDrawn": maybeChangeLinkCategory,     // these two DiagramEvents call a function that is defined below
           "LinkRelinked": maybeChangeLinkCategory,  
           "undoManager.isEnabled": true,
+		   "diagram.isReadOnly" : true,
 		  layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
                 { angle: 90, layerSpacing: 80 })
         });
@@ -59,29 +60,6 @@ Date: 2017
             portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer" })
       ));
 	  
-	  // This is the template for a feature of vanGurp model
-    myDiagram.nodeTemplateMap.add("diamondF",
-      $("Node",
-        { selectable: false, avoidable: false,
-          layerName: "Foreground" },  // always have link label nodes in front of Links
-        $("Shape", "Diamond",
-          { width: 1, height: 1, stroke: "black"})
-      ));
-	  
-	   // This is the template for external Features
-    myDiagram.nodeTemplateMap.add("externalFeatures",
-      $("Node", "Auto",
-        { locationSpot: go.Spot.Center,
-          layerName: "Background" },  // always have regular nodes behind Links
-        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-        $("Shape", "Rectangle",
-          { fill: "white", stroke: "black",strokeDashArray: [6, 6, 6, 6],
-            portId: "", cursor: "pointer" },
-          new go.Binding("fill", "color")),
-        $("TextBlock",
-          { margin: 8 },  
-          new go.Binding("text", "key"))  
-      ));
 	  
 	
     // the regular link template, mandatory features
@@ -89,8 +67,7 @@ Date: 2017
       $("Link",
 		
         { relinkableFrom: true, relinkableTo: true, toShortLength: 2 },
-        $("Shape", { stroke: "#000", strokeWidth: 2 }),
-        $("Shape", { fill: "#000", stroke: null, toArrow: "Circle" })
+        $("Shape", { stroke: "#000", strokeWidth: 2 })
       );
 	  
     // template to link links
@@ -109,56 +86,7 @@ Date: 2017
 		$("Shape", { fill: "#fff", stroke: "#000", toArrow: "Circle" })
       ));
 	  
-	   // template for mandatory features (diamond)
-	  myDiagram.linkTemplateMap.add("mandatoryDiamond",
-      $("Link",
-        { relinkableFrom: true, relinkableTo: true },
-        $("Shape", { stroke: "#000", strokeWidth: 2 }),
-		$("Shape", {scale:1.5 , fill: "#000", stroke: "#000", toArrow: "Diamond" }),
-		  $(go.TextBlock, "Features",
-        { segmentIndex: -1, segmentOffset: new go.Point(NaN, NaN),
-          segmentOrientation: go.Link.OrientDownright })
-      ));
-	  
-	  // template for optional features (diamond)
-	  myDiagram.linkTemplateMap.add("optionalDiamond",
-      $("Link",
-        { relinkableFrom: true, relinkableTo: true },
-        $("Shape", { stroke: "#000", strokeWidth: 2 }),
-		$("Shape", {scale:1.5 , fill: "#fff", stroke: "#000", toArrow: "Diamond" })
-      ));
-	  
-	   // template for optional features (diamond)
-	  myDiagram.linkTemplateMap.add("diamondChild",
-      $("Link",
-        { relinkableFrom: true, relinkableTo: true,routing: go.Link.Orthogonal},
-        $("Shape", { stroke: "#000", strokeWidth: 2 })
-      ));
-	  
-	  // template for cardinality features
-    myDiagram.linkTemplateMap.add("cardinality",
-      $("Link",
-		
-        { relinkableFrom: true, relinkableTo: true, toShortLength: 2 },
-        $("Shape", { stroke: "#000", strokeWidth: 2 }),
-        $("Shape", { fill: "#000", stroke: null, toArrow: "Circle" }),
-		 $(go.TextBlock, "[0..*]",
-        { segmentIndex: -1, segmentOffset: new go.Point(NaN, NaN),
-          segmentOrientation: go.Link.OrientUpleft })
-		//,		$(go.TextBlock, "<0-1>", { segmentIndex: 9, segmentFraction: 1 })
-      ));
-	  
-	    // template for cardinality features
-    myDiagram.linkTemplateMap.add("cardinalityGroup",
-      $("Link",
-		
-        { relinkableFrom: true, relinkableTo: true, toShortLength: 2 },
-        $("Shape", { stroke: "#000", strokeWidth: 2 }),
-        $("Shape", { fill: "#000", stroke: null, toArrow: "Circle" }),
-		 $(go.TextBlock, "<1-3>",
-        { segmentIndex: 0, segmentOffset: new go.Point(NaN, NaN),
-          segmentOrientation: go.Link.OrientDownright },{ alignmentFocus: new go.Spot(0.8, 2, 0, 0) })
-      ));
+	
 	  
 	  
     // GraphLinksModel support for link label nodes requires specifying two properties.
@@ -182,6 +110,7 @@ Date: 2017
   function load() {
     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
   }
+  
 </script>
 </head>
 <body onload="init()">
@@ -209,25 +138,14 @@ Date: 2017
 {"key":"F3" },
 {"key":"F4" },
 {"key":"F5" },
-{"key":"F6" },
-{"key":"F7" , "category":"diamondF"},
-{"key":"F8", "category":"externalFeatures" },
-{"key":"F9" },
-{"key":"F10" },
-{"key":"F11" },
 {"key":"F12" },
 {"key":"F13" },
 {"key":"F14" },
 {"key":"F15" },
 {"key":"Root-F1", "category":"LinkLabel" },
 {"key":"Root-F5", "category":"LinkLabel" },
-{"key":"Root-F6", "category":"LinkLabel" },
-{"key":"Root-F7", "category":"LinkLabel" },
 {"key":"Root-F8", "category":"LinkLabel" },
-{"key":"Root-F9", "category":"LinkLabel" },
 {"key":"Root-F12", "category":"LinkLabel" },
-{"key":"F7-F10", "category":"diamondF" },
-{"key":"F7-F11", "category":"diamondF" },
 {"key":"F1-F2", "category":"LinkLabel" },
 {"key":"F1-F3", "category":"LinkLabel" },
 {"key":"F1-F4", "category":"LinkLabel" },
@@ -240,18 +158,13 @@ Date: 2017
   "linkDataArray": [ 
 {"from":"Root", "to":"F1", "labelKeys":[ "Root-F1" ]},
 {"from":"Root", "to":"F5", "labelKeys":[ "Root-F5" ],"category":"optional"},
-{"from":"Root", "to":"F6", "labelKeys":[ "Root-F6" ],"category":"optionalDiamond"},
-{"from":"Root", "to":"F7", "labelKeys":[ "Root-F7" ],"category":"mandatoryDiamond"},
 {"from":"Root", "to":"F8", "labelKeys":[ "Root-F8" ]},
-{"from":"Root", "to":"F9", "labelKeys":[ "Root-F9" ],"category":"cardinality"},
 {"from":"F1", "to":"F2", "labelKeys":[ "F1-F2" ]},
 {"from":"F1", "to":"F3", "labelKeys":[ "F1-F3" ]},
 {"from":"F1", "to":"F4", "labelKeys":[ "F1-F4" ],"category":"optional"},
-{"from":"F7", "to":"F10", "labelKeys":[ "F7-F10" ],"category":"diamondChild"},
-{"from":"F7", "to":"F11", "labelKeys":[ "F7-F11" ],"category":"diamondChild"},
-{"from":"F1-F4", "to":"F1-F2", "labelKeys":[ "Alt1" ], "category":"linkToLink"},
+{"from":"F1-F3", "to":"F1-F2", "labelKeys":[ "Alt1" ], "category":"linkToLink"},
 {"from":"Root", "to":"F12", "labelKeys":[ "Root-F12" ],"category":"optional"},
-{"from":"F12", "to":"F13", "labelKeys":[ "F12-F13" ],"category":"cardinalityGroup"},
+{"from":"F12", "to":"F13", "labelKeys":[ "F12-F13" ]},
 {"from":"F12", "to":"F14", "labelKeys":[ "F12-F14" ]},
 {"from":"F12", "to":"F15", "labelKeys":[ "F12-F15" ]},
 {"from":"F12-F15", "to":"F12-F13", "labelKeys":[ "Alt2" ], "category":"linkToLink"}

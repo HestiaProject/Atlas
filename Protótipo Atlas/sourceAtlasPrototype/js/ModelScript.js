@@ -23,7 +23,7 @@ Model.prototype.removeFeature = function(feature){
 
 Model.prototype.addAssociation = function(association){
      if (association != undefined){
-        this.listFeatures.push(feature);
+        this.listAssociations.push(association);
         return true;
     }else{
         return false;

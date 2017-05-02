@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>AtlasPrototype</title>
+
+    <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+</head>
+
+<body>
+
+
+    <div class="sideBar">
+        <a onclick="onClick()" href="javascript:void(0);"><i class="material-icons"  style="font-size:48px;" title="Create new feature">crop_16_9</i></a>
+        <a href="#"><i class="fa fa-window-close" title="Remove feature"></i></a>
+        <a href="#" class="association"><i class="fa fa-share-alt" title="Create new Association"></i></a>
+        <a href="#" class="association"><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
+    </div>
+
+    <div class="topBar">
+        <a href="#"><i class="fa fa-save" title="Save as Json"></i></a>
+        <a href="#"><i class="fa fa-file-image-o" title="Save as png"></i></a>
+    </div>
+
+    <form>
+        <input type="text" name="fileName" placeholder="Model name">
+    </form>
+
+    <img src="./img/LogoES.svg" alt="ES_Logo">
+
+    <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
+        <li>
+            <a onclick="onClick()" href="javascript:void(0);">Create Feature</a>
+        </li>
+        <li>
+            <a href="#">item 2</a>
+        </li>
+        <li>
+            <a href="#">item 3</a>
+        </li>
+    </div>
+
+    <canvas class="canvas" id="canvas"></canvas>
+
+    <script src=".\js\Draw.js"></script>
+    <script src=".\js\CancelMenu.js"></script>
+
+</body>
+
+
+
+
+</html>

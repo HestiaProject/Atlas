@@ -15,8 +15,8 @@
 
 <h2>My First JavaScript</h2>
 
-<button type="button" onclick="document.getElementById('demo').innerHTML = tesr()">
-Click me to display Date and Time.</button>
+<button type="button" onclick="document.getElementById('demo').innerHTML = parser()">
+Click me to display teh parsing result.</button>
 
 <p id="demo"></p>
 
@@ -29,7 +29,7 @@ Click me to display the backward parsing result.</button>
 
 <script>
 var f1 = new Feature("a", "mandatory");
-var f2 = new Feature("b", "mandatory");	
+var f2 = new Feature("b", "optional");	
 var f3 = new Feature("c", "mandatory");
 var a1 = new Association(f1,f2);
 var a2 = new Association(f1,f3);
@@ -41,12 +41,11 @@ m1.addFeature(new Feature("dadada", "mandatory"));
 m1.addAssociation(a1);
 m1.addAssociation(a2);
 
-function tesr(){
-   var str = JSON.stringify(m1);
+function parser(){
 
-// rpl = replaceString(str,m1);
-  // downloadContent("testando.txt",rpl);
-   return str;
+ rpl = replaceString(m1);
+   //downloadContent("testando.txt",rpl);
+   return rpl;
 }
 
 

@@ -35,3 +35,9 @@ Model.prototype.getAssociations = function(){
     return this.listAssociations;
 
 }
+
+Model.prototype.getFeatures = function(){
+
+    return this.listFeatures;
+
+}

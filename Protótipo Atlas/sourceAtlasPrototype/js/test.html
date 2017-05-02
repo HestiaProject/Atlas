@@ -43,8 +43,8 @@ m1.addAssociation(a2);
 
 function parser(){
 
- rpl = replaceString(m1);
-   //downloadContent("testando.txt",rpl);
+ rpl = parseModelToString(m1);
+   downloadContent("testando.txt",rpl);
    return rpl;
 }
 

@@ -39,7 +39,7 @@ function declareAssociation(listAssociation){
 	var textAssociation = "";
 
 	for (i = 0; i < listAssociation.length; i++) { 
-    textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
+    textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\" }";
     if (i==(listAssociation.length-1)) {
     	textAssociation += "\n],\n";
     }else{
@@ -74,9 +74,9 @@ function declareLink(listAssociation,listFeatures){
 
 
 	if(category=="" || category == "mandatory"){ 
-	textAssociation += " }";//if there is no relation or is a mandatory, the category is empty
+	textAssociation += "}";//if there is no relation or is a mandatory, the category is empty
 	}	else{
-	textAssociation += ",\"category\":\""+category+"\" }";//set the relation between two features
+	textAssociation += ",\"category\":\""+category+"\"}";//set the relation between two features
 
 	}
 

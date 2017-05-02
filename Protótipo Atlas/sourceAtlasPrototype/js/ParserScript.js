@@ -23,7 +23,7 @@ function declareFeature(listFeature){
 var textFeatures = "";
 
 for (i = 0; i < listFeature.length; i++) { 
-    textFeatures += "\n{\"key\":\""+ listFeature[i].getName() + "\"}";
+    textFeatures += "\n{\"key\":\""+ listFeature[i].getName() + "\", \"category\":\""+listFeature[i].getType()+"\" }";
     textFeatures += ",";
     
 }

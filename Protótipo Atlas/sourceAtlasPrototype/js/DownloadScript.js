@@ -1,0 +1,7 @@
+function downloadContent(name, content) {
+  var atag = document.createElement("a");
+  var file = new Blob([content], {type: 'text/plain'});
+  atag.href = URL.createObjectURL(file);
+  atag.download = name;
+  atag.click();
+}

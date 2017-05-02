@@ -5,6 +5,8 @@
 	<script type="text/javascript" src="ModelScript.js" ></script>
 	<script type="text/javascript" src="FeatureScript.js" ></script>
 	<script type="text/javascript" src="AssociationScript.js" ></script>
+	<script type="text/javascript" src="DownloadScript.js" ></script>
+	<script type="text/javascript" src="ParserScript.js" ></script>
 </head>
 <body>
 
@@ -32,8 +34,13 @@ m1.addAssociation(a1);
 m1.addAssociation(a2);
 
 function tesr(){
-	return JSON.stringify(m1);
+   var str = JSON.stringify(m1);
+
+ rpl = replaceString(str,m1);
+   downloadContent("testando.txt",rpl);
+   return rpl;
 }
+
 var json_data = JSON.stringify(m1);
 </script>
 </body>

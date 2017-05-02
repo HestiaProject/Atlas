@@ -41,3 +41,16 @@ Model.prototype.getFeatures = function(){
     return this.listFeatures;
 
 }
+
+Model.prototype.findFeature = function(string){
+
+	for(var i = 0;i < this.listFeatures.length;i++){
+		var f1 = this.listFeatures[i];
+		if(f1.getName() == string){
+			return f1;
+		}
+		
+	}
+	return null;
+
+}

@@ -129,47 +129,47 @@ Date: 2017
       </div>
       <textarea id="mySavedModel" style="width:100%;height:400px">
 	  
+	  
 { "class": "go.GraphLinksModel",
   "linkLabelKeysProperty": "labelKeys",
   "nodeDataArray": [ 
-{"key":"Root" },
-{"key":"F1"},
-{"key":"F2" },
-{"key":"F3" },
-{"key":"F4" },
-{"key":"F5" },
-{"key":"F12" },
-{"key":"F13" },
-{"key":"F14" },
-{"key":"F15" },
-{"key":"Root-F1", "category":"LinkLabel" },
-{"key":"Root-F5", "category":"LinkLabel" },
-{"key":"Root-F8", "category":"LinkLabel" },
-{"key":"Root-F12", "category":"LinkLabel" },
-{"key":"F1-F2", "category":"LinkLabel" },
-{"key":"F1-F3", "category":"LinkLabel" },
-{"key":"F1-F4", "category":"LinkLabel" },
-{"key":"F12-F13", "category":"LinkLabel" },
-{"key":"F12-F14", "category":"LinkLabel" },
-{"key":"F12-F15", "category":"LinkLabel" },
-{"key":"Alt1", "category":"LinkLabel" },
-{"key":"Alt2", "category":"LinkLabel" }
+{"key":"Root", "category":"mandatory"},
+{"key":"F1", "category":"mandatory"},
+{"key":"F2", "category":"alternative"},
+{"key":"F3", "category":"alternative"},
+{"key":"F4", "category":"optional"},
+{"key":"F5", "category":"optional"},
+{"key":"F12", "category":"optional"},
+{"key":"F13", "category":"alternative"},
+{"key":"F14", "category":"alternative"},
+{"key":"F15", "category":"alternative"},
+{"key":"Root-F1", "category":"LinkLabel"},
+{"key":"Root-F5", "category":"LinkLabel"},
+{"key":"Root-F12", "category":"LinkLabel"},
+{"key":"F1-F2", "category":"LinkLabel"},
+{"key":"F1-F3", "category":"LinkLabel"},
+{"key":"F1-F4", "category":"LinkLabel"},
+{"key":"F12-F13", "category":"LinkLabel"},
+{"key":"F12-F14", "category":"LinkLabel"},
+{"key":"F12-F15", "category":"LinkLabel"},
+{"key":"Alt1", "category":"LinkLabel"},
+{"key":"Alt2", "category":"LinkLabel"}
  ],
   "linkDataArray": [ 
 {"from":"Root", "to":"F1", "labelKeys":[ "Root-F1" ]},
 {"from":"Root", "to":"F5", "labelKeys":[ "Root-F5" ],"category":"optional"},
-{"from":"Root", "to":"F8", "labelKeys":[ "Root-F8" ]},
+{"from":"Root", "to":"F12", "labelKeys":[ "Root-F12" ],"category":"optional"},
 {"from":"F1", "to":"F2", "labelKeys":[ "F1-F2" ]},
 {"from":"F1", "to":"F3", "labelKeys":[ "F1-F3" ]},
 {"from":"F1", "to":"F4", "labelKeys":[ "F1-F4" ],"category":"optional"},
 {"from":"F1-F3", "to":"F1-F2", "labelKeys":[ "Alt1" ], "category":"linkToLink"},
-{"from":"Root", "to":"F12", "labelKeys":[ "Root-F12" ],"category":"optional"},
 {"from":"F12", "to":"F13", "labelKeys":[ "F12-F13" ]},
 {"from":"F12", "to":"F14", "labelKeys":[ "F12-F14" ]},
 {"from":"F12", "to":"F15", "labelKeys":[ "F12-F15" ]},
 {"from":"F12-F15", "to":"F12-F13", "labelKeys":[ "Alt2" ], "category":"linkToLink"}
  ]}
-      </textarea>
+      
+	        </textarea>
     </div>
   </div>
 </body>

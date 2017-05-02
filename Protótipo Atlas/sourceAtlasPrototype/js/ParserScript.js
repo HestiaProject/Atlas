@@ -23,7 +23,7 @@ function declareFeature(listFeature){
 var textFeatures = "";
 
 for (i = 0; i < listFeature.length; i++) { 
-    textFeatures += "\n{\"key\":\""+ listFeature[i].getName() + "\", \"category\":\""+listFeature[i].getType()+"\" }";
+    textFeatures += "\n{\"key\":\""+ listFeature[i].getName() + "\", \"category\":\""+listFeature[i].getType()+"\"}";
     textFeatures += ",";
     
 }
@@ -39,7 +39,7 @@ function declareAssociation(listAssociation){
 	var textAssociation = "";
 
 	for (i = 0; i < listAssociation.length; i++) { 
-    textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\" }";
+    textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
     if (i==(listAssociation.length-1)) {
     	textAssociation += "\n],\n";
     }else{
@@ -70,7 +70,7 @@ function declareLink(listAssociation,listFeatures){
 	}
 
     textAssociation += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
-    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\"]";
 
 
 	if(category=="" || category == "mandatory"){ 

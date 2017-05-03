@@ -57,6 +57,8 @@ return textAssociation;
 function declareLink(listAssociation,listFeatures){
 
 	var textAssociation = "";
+	var mandOpc = "";
+	var alter = "";
 	var category = "";
 
 	for (i = 0; i < listAssociation.length; i++) {  
@@ -69,26 +71,43 @@ function declareLink(listAssociation,listFeatures){
 
 	}
 
-    textAssociation += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+	if(category == "alternative"){
+		alter += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
     "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
+    alter += "}";
+    if (i!=(listAssociation.length-1)) {
 
+    	alter += ",";
+    }
 
-	if(category=="" || category == "mandatory"|| category == "alternative"){ 
-	textAssociation += "}";//if there is no relation or is a mandatory, the category is empty
-	}	else{
-	textAssociation += ",\"category\":\""+category+"\"}";//set the relation between two features
+	}
+	if(category == "mandatory"){
+		mandOpc += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
+    mandOpc += "}";
+    if (i!=(listAssociation.length-1)) {
 
+    	mandOpc += ",";
+    }
+
+	}
+	if(category == "optional"){
+	mandOpc += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
+    mandOpc += ",\"category\":\""+category+"\"}";
+    if (i!=(listAssociation.length-1)) {
+
+    	mandOpc += ",";
+    }
 	}
 
 
-    if (i==(listAssociation.length-1)) {
-    	textAssociation += "\n]}\n";
-    }else{
-    	textAssociation += ",";
-    }
+    
 }
 
-return textAssociation;
+    	textAssociation += "\n]}\n";
+
+return mandOpc+alter+textAssociation;
 }
 
 
@@ -152,9 +171,10 @@ for (l = 0; l < listLA.length; l++) {
     
 	for (m = 0; m < listLA.length; m++) { 
     
-	if (listLA[l].getParentName()==listLA[m].getParentName() && listLA[l].getChildName()!=listLA[m].getChildName() && m == listLA.length-1 && l == 0){
+	if (listLA[m].getParentName()==listLA[l].getParentName() && listLA[m].getChildName()!=listLA[l].getChildName()){
 		cont++;
-		textLinkToLink += "\n{\"from\":\""+ listLA[m].getParentName()+"-"+listLA[m].getChildName()+"\", \"to\":\""+listLA[l].getParentName()+"-"+listLA[l].getChildName()+"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
+		textLinkToLink += "\n{\"from\":\""+ listLA[l].getParentName()+"-"+listLA[l].getChildName()+"\", \"to\":\""+listLA[m].getParentName()+"-"+listLA[m].getChildName()+
+		"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
 	}
 
 	

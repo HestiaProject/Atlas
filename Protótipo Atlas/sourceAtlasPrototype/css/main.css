@@ -85,14 +85,20 @@ form input {
 
 /*end Top Bar*/
 
+myDiagramDiv {
+    margin-left: 30px;
+	padding-left:50px;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
 canvas {
     top: 10%;
     left: 10%;
     bottom: 0px;
     right: 0px;
-    background-color: #fff;
-    height: 100%;
-    width: 100%;
+    
 }
 
 

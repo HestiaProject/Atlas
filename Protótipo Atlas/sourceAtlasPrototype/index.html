@@ -1,60 +1,114 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>AtlasPrototype</title>
-
-    <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-</head>
-
-<body>
-
-
-    <div class="sideBar">
-        <a onclick="onClick()" href="javascript:void(0);"><i class="material-icons"  style="font-size:48px;" title="Create new feature">crop_16_9</i></a>
-        <a href="#"><i class="fa fa-window-close" title="Remove feature"></i></a>
-        <a href="#" class="association"><i class="fa fa-share-alt" title="Create new Association"></i></a>
-        <a href="#" class="association"><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
-    </div>
-
-    <div class="topBar">
-        <a href="#"><i class="fa fa-save" title="Save as Json"></i></a>
-        <a href="#"><i class="fa fa-file-image-o" title="Save as png"></i></a>
-    </div>
-
-    <form>
-        <input type="text" name="fileName" placeholder="Model name">
-    </form>
-
-    <img src="./img/LogoES.svg" alt="ES_Logo">
-
-    <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
-        <li>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>AtlasPrototype</title>
+      <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="./css/main.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <script src=".\js\Draw.js"></script>
+      <script src=".\js\CancelMenu.js"></script>
+      <script type="text/javascript" src="./js/SaveScript.js" ></script>
+      <script type="text/javascript" src="./js/ModelScript.js" ></script>
+      <script type="text/javascript" src="./js/FeatureScript.js" ></script>
+      <script type="text/javascript" src="./js/AssociationScript.js" ></script>
+      <script type="text/javascript" src="./js/DownloadScript.js" ></script>
+      <script type="text/javascript" src="./js/ParserScript.js" ></script>
+      <script type="text/javascript" src="./js/BackwardParserScript.js" ></script>
+      <script type="text/javascript" src="./js/Go.js" ></script>
+      <script type="text/javascript" src="./js/GoFunction.js" ></script>
+   </head>
+   <body onload="initGo()">
+      <div class="sideBar">
+         <a onclick="onClick()" href="javascript:void(0);"><i class="material-icons"  style="font-size:48px;" title="Create new feature">crop_16_9</i></a>
+         <a href="#"><i class="fa fa-window-close" title="Remove feature"></i></a>
+         <a href="#" class="association"><i class="fa fa-share-alt" title="Create new Association"></i></a>
+         <a href="#" class="association"><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
+      </div>
+      <div class="topBar">
+         <a href="#"><i class="fa fa-save" title="Save as Json"></i></a>
+         <a href="#"><i class="fa fa-file-image-o" title="Save as png"></i></a>
+      </div>
+      <form>
+         <input type="text" name="fileName" placeholder="Model name">
+      </form>
+      <img src="./img/LogoES.svg" alt="ES_Logo">
+      <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
+         <li>
             <a onclick="onClick()" href="javascript:void(0);">Create Feature</a>
-        </li>
-        <li>
+         </li>
+         <li>
             <a href="#">item 2</a>
-        </li>
-        <li>
+         </li>
+         <li>
             <a href="#">item 3</a>
-        </li>
-    </div>
-
-    <canvas class="canvas" id="canvas"></canvas>
-
-    <script src=".\js\Draw.js"></script>
-    <script src=".\js\CancelMenu.js"></script>
-
-</body>
-
-
-
-
+         </li>
+      </div>
+      <div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
+         <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px;"></div>
+       
+         <button onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
+         <div style="display:none;" id="JsonText">
+            <div>
+               <button id="SaveButton" onclick="save()">Save</button>
+               <button onclick="load()">Load</button>
+               Diagram.model saved in JSON format:<br />
+            </div>
+            <textarea id="mySavedModel" style="width:100%;height:400px;">
+	  
+	  
+					{ "class": "go.GraphLinksModel",
+					"linkLabelKeysProperty": "labelKeys",
+					"nodeDataArray": [ 
+					{"key":"Root", "category":"mandatory"},
+					{"key":"F1", "category":"mandatory"},
+					{"key":"F2", "category":"alternative"},
+					{"key":"F3", "category":"alternative"},
+					{"key":"F4", "category":"optional"},
+					{"key":"F5", "category":"optional"},
+					{"key":"F12", "category":"optional"},
+					{"key":"F13", "category":"alternative"},
+					{"key":"F14", "category":"alternative"},
+					{"key":"F15", "category":"alternative"},
+					{"key":"Root-F1", "category":"LinkLabel"},
+					{"key":"Root-F5", "category":"LinkLabel"},
+					{"key":"Root-F12", "category":"LinkLabel"},
+					{"key":"F1-F2", "category":"LinkLabel"},
+					{"key":"F1-F3", "category":"LinkLabel"},
+					{"key":"F1-F4", "category":"LinkLabel"},
+					{"key":"F12-F13", "category":"LinkLabel"},
+					{"key":"F12-F14", "category":"LinkLabel"},
+					{"key":"F12-F15", "category":"LinkLabel"},
+					{"key":"Alt1", "category":"LinkLabel"},
+					{"key":"Alt2", "category":"LinkLabel"}
+					],
+					"linkDataArray": [ 
+					{"from":"Root", "to":"F1", "labelKeys":[ "Root-F1" ]},
+					{"from":"Root", "to":"F5", "labelKeys":[ "Root-F5" ],"category":"optional"},
+					{"from":"Root", "to":"F12", "labelKeys":[ "Root-F12" ],"category":"optional"},
+					{"from":"F1", "to":"F2", "labelKeys":[ "F1-F2" ]},
+					{"from":"F1", "to":"F3", "labelKeys":[ "F1-F3" ]},
+					{"from":"F1", "to":"F4", "labelKeys":[ "F1-F4" ],"category":"optional"},
+					{"from":"F1-F3", "to":"F1-F2", "labelKeys":[ "Alt1" ], "category":"linkToLink"},
+					{"from":"F12", "to":"F13", "labelKeys":[ "F12-F13" ]},
+					{"from":"F12", "to":"F14", "labelKeys":[ "F12-F14" ]},
+					{"from":"F12", "to":"F15", "labelKeys":[ "F12-F15" ]},
+					{"from":"F12-F15", "to":"F12-F13", "labelKeys":[ "Alt2" ], "category":"linkToLink"}
+					]}
+      
+	        </textarea>
+         </div>
+      </div>
+      <script type="text/javascript">
+         function toggle_visibility(id) {
+             var e = document.getElementById(id);
+             if(e.style.display == 'block')
+                e.style.display = 'none';
+             else
+                e.style.display = 'block';
+         }
+      </script>
+   </body>
 </html>

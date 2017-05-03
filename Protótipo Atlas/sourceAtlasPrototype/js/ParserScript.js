@@ -8,10 +8,12 @@ function parseModelToString(model){
 var features = declareFeature(model.getFeatures());
 var associations = declareAssociation(model.getAssociations());
 var links = declareLink(model.getAssociations(),model.getFeatures());
+var alternative = declareAssociationAlternative(model.getFeatures());
+var linkToLink = declareLinkToLink(model.getFeatures(),model.getAssociations());
 
 var begin = "{ \"class\": \"go.GraphLinksModel\",\n\"linkLabelKeysProperty\": \"labelKeys\",\n\"nodeDataArray\": [ ";
 
-return begin+features+associations+links;
+return begin+features+associations+alternative+linkToLink+links;
 
 }
 
@@ -40,9 +42,7 @@ function declareAssociation(listAssociation){
 
 	for (i = 0; i < listAssociation.length; i++) { 
     textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
-    if (i==(listAssociation.length-1)) {
-    	textAssociation += "\n],\n";
-    }else{
+    if (i!=(listAssociation.length-1)) {
     	textAssociation += ",";
     }
 }
@@ -56,7 +56,7 @@ return textAssociation;
 */
 function declareLink(listAssociation,listFeatures){
 
-	var textAssociation = "\"linkDataArray\": [ ";
+	var textAssociation = "";
 	var category = "";
 
 	for (i = 0; i < listAssociation.length; i++) {  
@@ -70,10 +70,10 @@ function declareLink(listAssociation,listFeatures){
 	}
 
     textAssociation += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
-    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\"]";
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
 
 
-	if(category=="" || category == "mandatory"){ 
+	if(category=="" || category == "mandatory"|| category == "alternative"){ 
 	textAssociation += "}";//if there is no relation or is a mandatory, the category is empty
 	}	else{
 	textAssociation += ",\"category\":\""+category+"\"}";//set the relation between two features
@@ -92,7 +92,78 @@ return textAssociation;
 }
 
 
+function declareAssociationAlternative(listFeatures){
 
+	var textAlternative = "";
+	var cont = 0;
+
+
+for (j = 0; j < listFeatures.length; j++) { // "for" to find the relation of the child feature
+
+		if (listFeatures[j].getType()=="alternative"){
+			cont++;
+			    	
+}
+
+	}
+
+for (i = 1; i <= Math.round(cont/2); i++) { 
+		
+			    	textAlternative += ",\n{\"key\":\"Alt"+(i)+"\", \"category\":\"LinkLabel\"}";
+			    	
+}
+
+    	textAlternative += "\n],\n\"linkDataArray\": [ ";
+    
+return textAlternative;
+
+}
+
+function declareLinkToLink(listFeatures,listAssociation){
+	var textLinkToLink ="";
+	var listFA = [];
+	var listLA = [];
+	var cont = 0;
+
+
+for (i = 0; i < listFeatures.length; i++) { 
+    
+	if (listFeatures[i].getType()=="alternative"){
+		listFA.push(listFeatures[i]);
+
+	}
+	
+  }
+
+  for (j = 0; j < listAssociation.length; j++) { 
+
+for (k = 0; k < listFA.length; k++) { 
+    
+    if (listAssociation[j].getChildName()==listFA[k].getName()){
+	listLA.push(listAssociation[j]);
+	}
+
+  }
+
+}
+
+
+for (l = 0; l < listLA.length; l++) { 
+    
+	for (m = 0; m < listLA.length; m++) { 
+    
+	if (listLA[l].getParentName()==listLA[m].getParentName() && listLA[l].getChildName()!=listLA[m].getChildName() && m == listLA.length-1 && l == 0){
+		cont++;
+		textLinkToLink += "\n{\"from\":\""+ listLA[m].getParentName()+"-"+listLA[m].getChildName()+"\", \"to\":\""+listLA[l].getParentName()+"-"+listLA[l].getChildName()+"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
+	}
+
+	
+	
+  }
+	
+  }
+	return textLinkToLink;
+}
 
 
 

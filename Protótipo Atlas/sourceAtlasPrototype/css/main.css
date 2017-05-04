@@ -1,16 +1,6 @@
-/*Side bar and icons*/
+/*File Title*/
 
-img {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 10%;
-    height: 10%;
-    /*position: relative;*/
-    /*background-color: #FFF;*/
-}
-
-form input {
+.fileNameTextField {
     font-size: 30px;
     top: 2%;
     left: 45%;
@@ -18,41 +8,8 @@ form input {
     background-color: #225889;
     border-style: none;
     color: #fff;
+    z-index: 2;
 }
-
-.sideBar {
-    height: 100%;
-    width: 10%;
-    position: fixed;
-    top: 10%;
-    left: 0px;
-    padding-top: 10px;
-    /*background-color: #225889;*/
-    background-color: #000;
-}
-
-.association i {
-    color: #fff;
-    font-size: 36px;
-    /*Chrome Safari*/
-    -webkit-transform: rotate(90deg);
-    /* Firefox */
-    -moz-transform: rotate(90deg);
-}
-
-.sideBar a {
-    display: block;
-    text-align: center;
-    padding: 16px;
-    /*transition: all 0.3s ease;*/
-    color: #fff;
-    font-size: 36px;
-}
-
-.sideBar a:hover {
-    background-color: #225889;
-}
-/*End Side Bar*/
 
 
 /*Top bar and icons*/
@@ -64,18 +21,21 @@ form input {
     top: 0;
     left: 0;
     background-color: #225889;
-    padding-left: 90%;
+    padding-left: 85%;
+    z-index: 1;
 }
 
 .topBar a {
+    vertical-align: center;
     display: inline-block;
-    text-align: center;
-    transition: all 0.3s ease;
-    padding:1%;
+    font-size: 5vh;
+    font-size: 2vw;
     color: #fff;
-    font-size: 36px;
-    /*width: 36px;*/
-    /*height: 75px;   */
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+    justify-content: right;
 }
 
 .topBar a:hover {
@@ -83,48 +43,168 @@ form input {
 }
 
 
-/*end Top Bar*/
+/*Side bar and icons*/
 
-myDiagramDiv {
-    margin-left: 30px;
-	padding-left:50px;
-    background-color: #fff;
+.sideBar {
     height: 100%;
-    width: 100%;
+    width: 5%;
+    position: fixed;
+    top: 10%;
+    left: 0px;
+	z-index:1;
+    background-color: #000;
 }
 
-canvas {
+.association i {
+    /*Chrome Safari*/
+    -webkit-transform: rotate(90deg);
+    /* Firefox */
+    -moz-transform: rotate(90deg);
+}
+
+.sideBar a {
+    display: block;
+    text-align: center;
+    padding: 2vh;
+    color: #fff;
+    /*font-size: 5vh;*/
+    font-size: 2vw;
+    z-index: 1;
+}
+
+.sideBar a:hover {
+    background-color: #225889;
+}
+
+.sideBar .material-icons {
+    /*font-size: 5.5vh;*/
+    font-size: 3vw;
+}
+
+
+/*Canvas*/
+
+.canvas {
     top: 10%;
     left: 10%;
     bottom: 0px;
     right: 0px;
-    
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    z-index: -3;
+}
+
+.jsonText {
+    z-index: -1;
 }
 
 
-li{
-    text-align: center;        
+/*RightClick Menu*/
+
+.rightClickMenuCanvas li {
+    text-align: center;
     list-style-type: none;
 }
 
-li a{
-    color: white;    
+.rightClickMenuCanvas li a {
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
 .rightClickMenuCanvas {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  padding: 12px 0;
-  width: 200px; 
-  background-color: #225889;  
+    display: none;
+    position: absolute;
+    z-index: 10;
+    padding: 12px 0;
+    width: 200px;
+    background-color: #225889;
 }
 
 .rightClickMenuCanvasActive {
-  display: block;
+    display: block;
 }
 
 
+/*Side Bar tooltips*/
 
+.sideBar .tooltip {
+    visibility: hidden;
+    display: block;
+    background-color: #225889;
+    color: #fff;
+    width: 30vh;
+    border-radius: 6px;
+    font-size: 3vh;
+    /*Position of box*/
+    position: absolute;
+    z-index: 1;
+    left: 110%;
+    margin-top: 10%;
+}
+
+
+/*arrow*/
+
+.sideBar .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #225889 transparent transparent;
+}
+
+.sideBar a:hover .tooltip {
+    visibility: visible;
+}
+
+
+/*Top Bar tooltips*/
+
+.topBar .tooltip {
+    visibility: hidden;
+    width: 20vh;
+    border-radius: 6px;
+    font-size: 3vh;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    margin-left: -3.5vw;
+}
+
+
+/*arrow*/
+
+.topBar .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent;
+}
+
+.topBar a:hover .tooltip {
+    visibility: visible;
+}
+
+
+/*text area*/
+
+#mySavedModel {
+    z-index: 0;
+}
+
+#myDiagramDiv {
+    z-index: 0;
+}

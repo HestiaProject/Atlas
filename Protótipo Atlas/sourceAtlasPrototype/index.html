@@ -1,122 +1,195 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+	{
+		<!DOCTYPE html>
+		<html lang="pt-br">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AtlasPrototype</title>
-  <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="./css/main.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>AtlasPrototype</title>
+		<link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-</head>
+		</head>
 
-<body onload="initGo()">
+		<body onload="firstLoad()">
 
-  <!--File Title-->
-  <form>
-    <input class="fileNameTextField" type="text" name="fileName" placeholder="Model name" value=''>
-  </form>
+		<!--File Title-->
+		<form>
+		<input id="modelName" class="fileNameTextField" type="text" name="fileName" placeholder="Model name" value=''>
+		</form>
 
-  <!--Top Bar-->
-  <div class="topBar">
-    <a onclick="" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
-    <a onclick= "downloadContent('testando.json',document.getElementById('mySavedModel').innerHTML);" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
-    <a onclick="" href="javascript:void(0);"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
-  </div>
+		<!--Top Bar-->
+		<div class="topBar">
+		<a onclick="" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
+		<a onclick= "saveAsJson()" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
+		<a onclick="exportPng()" href="javascript:void(0)"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
+		</div>
 
-  <!--Side Bar-->
-  <div class="sideBar">
-    <a onclick="" href="javascript:void(0);"><span class="tooltip">Create Feature</span><i class="material-icons">crop_16_9</i></a>
-    <a onclick="" href="javascript:void(0);"><span class="tooltip">Remove Feature</span><i class="fa fa-window-close"></i></a>
-    <a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Create Association</span><i class="fa fa-share-alt" title="Create new Association"></i></a>
-    <a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Remove Association</span><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
-  </div>
+		<!--Side Bar-->
+		<div class="sideBar">
+		<a onclick="" href="javascript:void(0);"><span class="tooltip">Create Feature</span><i class="material-icons">crop_16_9</i></a>
+		<a onclick="" href="javascript:void(0);"><span class="tooltip">Remove Feature</span><i class="fa fa-window-close"></i></a>
+		<a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Create Association</span><i class="fa fa-share-alt" title="Create new Association"></i></a>
+		<a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Remove Association</span><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
+		</div>
+
+		
+	
 
 
 
-  <!--Right Click Menu-->
-  <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
-    <li><a onclick="" href="javascript:void(0);">Create Feature</a></li>
-  </div>
+		<!--Right Click Menu-->
+		<div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
+		<li><a onclick="" href="javascript:void(0);">Create Feature</a></li>
+		</div>
 
-  <div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
-    <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px;"></div>
+		<div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
+		
+		<form action="javascript:loadJson()">
+		<input type="file" name="pic" accept=".json" id="jsonLoad">
+		<input type="submit">
+		</form>	
+		<p id="demo"></p>
+		<div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px;"></div>
+		
+		
 
-    <button onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
-    <div style="display:none;" id="JsonText" class="jsonText">
-      <div>
-        <button id="SaveButton" onclick="save()">Save</button>
-        <button onclick="load()">Load</button> Diagram.model saved in JSON format:<br />
-      </div>
-      <textarea id="mySavedModel" style="width:100%;height:400px;">
-	  
-	  
-					{ "class": "go.GraphLinksModel",
-					"linkLabelKeysProperty": "labelKeys",
-					"nodeDataArray": [ 
-					{"key":"Root", "category":"mandatory"},
-					{"key":"F1", "category":"mandatory"},
-					{"key":"F2", "category":"alternative"},
-					{"key":"F3", "category":"alternative"},
-					{"key":"F4", "category":"optional"},
-					{"key":"F5", "category":"optional"},
-					{"key":"F12", "category":"optional"},
-					{"key":"F13", "category":"alternative"},
-					{"key":"F14", "category":"alternative"},
-					{"key":"F15", "category":"alternative"},
-					{"key":"Root-F1", "category":"LinkLabel"},
-					{"key":"Root-F5", "category":"LinkLabel"},
-					{"key":"Root-F12", "category":"LinkLabel"},
-					{"key":"F1-F2", "category":"LinkLabel"},
-					{"key":"F1-F3", "category":"LinkLabel"},
-					{"key":"F1-F4", "category":"LinkLabel"},
-					{"key":"F12-F13", "category":"LinkLabel"},
-					{"key":"F12-F14", "category":"LinkLabel"},
-					{"key":"F12-F15", "category":"LinkLabel"},
-					{"key":"Alt1", "category":"LinkLabel"},
-					{"key":"Alt2", "category":"LinkLabel"}
-					],
-					"linkDataArray": [ 
-					{"from":"Root", "to":"F1", "labelKeys":[ "Root-F1" ]},
-					{"from":"Root", "to":"F5", "labelKeys":[ "Root-F5" ],"category":"optional"},
-					{"from":"Root", "to":"F12", "labelKeys":[ "Root-F12" ],"category":"optional"},
-					{"from":"F1", "to":"F2", "labelKeys":[ "F1-F2" ]},
-					{"from":"F1", "to":"F3", "labelKeys":[ "F1-F3" ]},
-					{"from":"F1", "to":"F4", "labelKeys":[ "F1-F4" ],"category":"optional"},
-					{"from":"F1-F3", "to":"F1-F2", "labelKeys":[ "Alt1" ], "category":"linkToLink"},
-					{"from":"F12", "to":"F13", "labelKeys":[ "F12-F13" ]},
-					{"from":"F12", "to":"F14", "labelKeys":[ "F12-F14" ]},
-					{"from":"F12", "to":"F15", "labelKeys":[ "F12-F15" ]},
-					{"from":"F12-F15", "to":"F12-F13", "labelKeys":[ "Alt2" ], "category":"linkToLink"}
-					]}
-      
-	        </textarea>
-    </div>
-  </div>
-  <script type="text/javascript">
-    function toggle_visibility(id) {
-      var e = document.getElementById(id);
-      if (e.style.display == 'block')
-        e.style.display = 'none';
-      else
-        e.style.display = 'block';
-    }
-  </script>
+		<button onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
+		<div style="display:none;" id="JsonText" class="jsonText">
+		<div>
+		<button id="SaveButton" onclick="save()">Save</button>
+		<button onclick="load()">Load</button> Diagram.model saved in JSON format:<br />
+		</div>
+		<textarea id="mySavedModel" style="width:100%;height:400px;">
 
-  <!--Load Scripts-->
-  <script src=".\js\CancelMenu.js"></script>
-  <script type="text/javascript" src="./js/SaveScript.js"></script>
-  <script type="text/javascript" src="./js/ModelScript.js"></script>
-  <script type="text/javascript" src="./js/FeatureScript.js"></script>
-  <script type="text/javascript" src="./js/AssociationScript.js"></script>
-  <script type="text/javascript" src="./js/DownloadScript.js"></script>
-  <script type="text/javascript" src="./js/ParserScript.js"></script>
-  <script type="text/javascript" src="./js/BackwardParserScript.js"></script>
-  <script type="text/javascript" src="./js/Go.js"></script>
-  <script type="text/javascript" src="./js/GoFunction.js"></script>
 
-</body>
 
-</html>
+		</textarea>
+		</div>
+		</div>
+		<script type="text/javascript">
+		
+		function firstLoad() {
+		var f1 = new Feature("a", "mandatory");
+		var f3 = new Feature("c", "optional");
+		var f2 = new Feature("b", "mandatory");	
+		var f4 = new Feature("d", "alternative");
+		var f5 = new Feature("e", "optional");
+		var f6 = new Feature("f", "alternative");
+		var f7 = new Feature("g", "optional");
+		var f8 = new Feature("g5", "mandatory");
+		var f9 = new Feature("g12", "alternative");
+		var a1 = new Association(f1,f2);
+		var a2 = new Association(f1,f3);
+		var a3 = new Association(f2,f4);
+		var a4 = new Association(f2,f5);
+		var a5 = new Association(f2,f6);
+		var a6 = new Association(f2,f7);
+		var a7 = new Association(f2,f8);
+		var a8 = new Association(f2,f9);
+		var m1 = new Model("m1");
+		m1.addFeature(f1);
+		m1.addFeature(f2);
+		m1.addFeature(f3);
+		m1.addFeature(f4);
+		m1.addFeature(f5);
+		m1.addFeature(f6);
+		m1.addFeature(f7);
+		m1.addFeature(f8);
+		m1.addFeature(f9);
+		m1.addAssociation(a1);
+		m1.addAssociation(a2);
+		m1.addAssociation(a3);
+		m1.addAssociation(a4);
+		m1.addAssociation(a5);
+		m1.addAssociation(a6);
+		m1.addAssociation(a7);
+		m1.addAssociation(a8);
+		
+		document.getElementById('mySavedModel').innerHTML = parseModelToString(m1);
+		
+		initGo();
+		
+		
+		}
+		
+		
+		
+		function updateModel(){
+		
+		document.getElementById('mySavedModel').innerHTML = parseModelToString(m1);
+		
+		initGo();
+		}
+		
+		String.prototype.isEmpty = function() {
+			return (this.length === 0 || !this.trim());
+		};
+
+		function toggle_visibility(id) {
+			var e = document.getElementById(id);
+			if (e.style.display == 'block')
+			e.style.display = 'none';
+			else
+			e.style.display = 'block';
+		}
+		
+		function saveAsJson(){
+		
+		var modelName = document.getElementById('modelName').value;
+		
+		if(modelName.isEmpty()){
+				alert("Insert the model name!");
+		} else {
+		var goJson = document.getElementById('mySavedModel').value;
+		downloadContent(modelName, goJson);
+		}
+		}
+		
+		function loadJson(){
+		
+		var goJson = document.getElementById('jsonLoad').value;
+				alert(jsonLoad);
+
+		var model = parseToModel(goJson);
+		
+		var newJson = parseModelToString(model);
+		
+		document.getElementById('demo').innerHTML = newJson;
+		}
+		
+		function exportPng(){
+		
+		var modelName = document.getElementById('modelName').value;
+		
+		if(modelName.isEmpty()){
+				alert("Insert the model name!");
+		} else {
+		var img = makeBlob();
+		downloadImg(modelName,img);
+		}
+		}
+		
+		
+		
+		
+		</script>
+
+		<!--Load Scripts-->
+		<script src=".\js\CancelMenu.js"></script>
+		<script type="text/javascript" src="./js/SaveScript.js"></script>
+		<script type="text/javascript" src="./js/ModelScript.js"></script>
+		<script type="text/javascript" src="./js/FeatureScript.js"></script>
+		<script type="text/javascript" src="./js/AssociationScript.js"></script>
+		<script type="text/javascript" src="./js/DownloadScript.js"></script>
+		<script type="text/javascript" src="./js/ParserScript.js"></script>
+		<script type="text/javascript" src="./js/BackwardParserScript.js"></script>
+		<script type="text/javascript" src="./js/Go.js"></script>
+		<script type="text/javascript" src="./js/GoFunction.js"></script>
+		<script type="text/javascript" src="./jQuery/jquery-3.2.1.js"></script>
+
+		</body>
+
+		</html>}

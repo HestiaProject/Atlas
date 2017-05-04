@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>AtlasPrototype</title>
-      <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
-      <link rel="stylesheet" href="./css/main.css" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-      <script src=".\js\Draw.js"></script>
-      <script src=".\js\CancelMenu.js"></script>
-      <script type="text/javascript" src="./js/SaveScript.js" ></script>
-      <script type="text/javascript" src="./js/ModelScript.js" ></script>
-      <script type="text/javascript" src="./js/FeatureScript.js" ></script>
-      <script type="text/javascript" src="./js/AssociationScript.js" ></script>
-      <script type="text/javascript" src="./js/DownloadScript.js" ></script>
-      <script type="text/javascript" src="./js/ParserScript.js" ></script>
-      <script type="text/javascript" src="./js/BackwardParserScript.js" ></script>
-      <script type="text/javascript" src="./js/Go.js" ></script>
-      <script type="text/javascript" src="./js/GoFunction.js" ></script>
-   </head>
-   <body onload="initGo()">
-      <div class="sideBar">
-         <a onclick="onClick()" href="javascript:void(0);"><i class="material-icons"  style="font-size:48px;" title="Create new feature">crop_16_9</i></a>
-         <a href="#"><i class="fa fa-window-close" title="Remove feature"></i></a>
-         <a href="#" class="association"><i class="fa fa-share-alt" title="Create new Association"></i></a>
-         <a href="#" class="association"><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AtlasPrototype</title>
+  <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+</head>
+
+<body onload="initGo()">
+
+  <!--File Title-->
+  <form>
+    <input class="fileNameTextField" type="text" name="fileName" placeholder="Model name" value=''>
+  </form>
+
+  <!--Top Bar-->
+  <div class="topBar">
+    <a onclick="" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
+    <a onclick="" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
+    <a onclick="" href="javascript:void(0);"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
+  </div>
+
+  <!--Side Bar-->
+  <div class="sideBar">
+    <a onclick="" href="javascript:void(0);"><span class="tooltip">Create Feature</span><i class="material-icons">crop_16_9</i></a>
+    <a onclick="" href="javascript:void(0);"><span class="tooltip">Remove Feature</span><i class="fa fa-window-close"></i></a>
+    <a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Create Association</span><i class="fa fa-share-alt" title="Create new Association"></i></a>
+    <a onclick="" href="javascript:void(0);" class="association"><span class="tooltip">Remove Association</span><i class="fa fa-share-alt-square" title="Remove feature"></i></a>
+  </div>
+
+
+
+  <!--Right Click Menu-->
+  <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
+    <li><a onclick="" href="javascript:void(0);">Create Feature</a></li>
+  </div>
+
+  <div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
+    <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px;"></div>
+
+    <button onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
+    <div style="display:none;" id="JsonText" class="jsonText">
+      <div>
+        <button id="SaveButton" onclick="save()">Save</button>
+        <button onclick="load()">Load</button> Diagram.model saved in JSON format:<br />
       </div>
-      <div class="topBar">
-         <a href="#"><i class="fa fa-save" title="Save as Json"></i></a>
-         <a href="#"><i class="fa fa-file-image-o" title="Save as png"></i></a>
-      </div>
-      <form>
-         <input type="text" name="fileName" placeholder="Model name">
-      </form>
-      <img src="./img/LogoES.svg" alt="ES_Logo">
-      <div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
-         <li>
-            <a onclick="onClick()" href="javascript:void(0);">Create Feature</a>
-         </li>
-         <li>
-            <a href="#">item 2</a>
-         </li>
-         <li>
-            <a href="#">item 3</a>
-         </li>
-      </div>
-      <div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
-         <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px;"></div>
-       
-         <button onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
-         <div style="display:none;" id="JsonText">
-            <div>
-               <button id="SaveButton" onclick="save()">Save</button>
-               <button onclick="load()">Load</button>
-               Diagram.model saved in JSON format:<br />
-            </div>
-            <textarea id="mySavedModel" style="width:100%;height:400px;">
+      <textarea id="mySavedModel" style="width:100%;height:400px;">
 	  
 	  
 					{ "class": "go.GraphLinksModel",
@@ -99,16 +93,30 @@
 					]}
       
 	        </textarea>
-         </div>
-      </div>
-      <script type="text/javascript">
-         function toggle_visibility(id) {
-             var e = document.getElementById(id);
-             if(e.style.display == 'block')
-                e.style.display = 'none';
-             else
-                e.style.display = 'block';
-         }
-      </script>
-   </body>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+  </script>
+
+  <!--Load Scripts-->
+  <script src=".\js\CancelMenu.js"></script>
+  <script type="text/javascript" src="./js/SaveScript.js"></script>
+  <script type="text/javascript" src="./js/ModelScript.js"></script>
+  <script type="text/javascript" src="./js/FeatureScript.js"></script>
+  <script type="text/javascript" src="./js/AssociationScript.js"></script>
+  <script type="text/javascript" src="./js/DownloadScript.js"></script>
+  <script type="text/javascript" src="./js/ParserScript.js"></script>
+  <script type="text/javascript" src="./js/BackwardParserScript.js"></script>
+  <script type="text/javascript" src="./js/Go.js"></script>
+  <script type="text/javascript" src="./js/GoFunction.js"></script>
+
+</body>
+
 </html>

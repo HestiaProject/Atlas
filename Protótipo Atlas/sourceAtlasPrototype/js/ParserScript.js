@@ -111,7 +111,7 @@ return mandOpc+alter+textAssociation;
 }
 
 
-function declareAssociationAlternative(listFeatures){
+function declareAssociationAlternative(listFeatures){ //declare all links to links, named as alt
 
 	var textAlternative = "";
 	var cont = 0;
@@ -138,11 +138,12 @@ return textAlternative;
 
 }
 
-function declareLinkToLink(listFeatures,listAssociation){
+function declareLinkToLink(listFeatures,listAssociation){ //declares the link to link, shhowing them in the canvas.
 	var textLinkToLink ="";
 	var listFA = [];
 	var listLA = [];
 	var cont = 0;
+	var listAux = [];
 
 
 for (i = 0; i < listFeatures.length; i++) { 
@@ -171,11 +172,17 @@ for (l = 0; l < listLA.length; l++) {
     
 	for (m = 0; m < listLA.length; m++) { 
     
-	if (listLA[m].getParentName()==listLA[l].getParentName() && listLA[m].getChildName()!=listLA[l].getChildName()){
+if (listAux.indexOf(listLA[m].getParentName()+"-"+listLA[m].getChildName()+" to" +listLA[l].getParentName()+"-"+listLA[l].getChildName())==(-1)){
+
+    	listAux.push(listLA[l].getParentName()+"-"+listLA[l].getChildName()+" to" +listLA[m].getParentName()+"-"+listLA[m].getChildName());
+
+    	if (listLA[m].getParentName()==listLA[l].getParentName() && listLA[m].getChildName()!=listLA[l].getChildName()){
 		cont++;
-		textLinkToLink += "\n{\"from\":\""+ listLA[l].getParentName()+"-"+listLA[l].getChildName()+"\", \"to\":\""+listLA[m].getParentName()+"-"+listLA[m].getChildName()+
+		textLinkToLink += "\n{\"from\":\""+ listLA[m].getParentName()+"-"+listLA[m].getChildName()+"\", \"to\":\""+listLA[l].getParentName()+"-"+listLA[l].getChildName()+
 		"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
 	}
+	}
+    
 
 	
 	

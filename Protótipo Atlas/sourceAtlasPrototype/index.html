@@ -23,7 +23,7 @@
 
 	<!--Top Bar-->
 	<div class="topBar">
-		<a onclick="" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
+		<a onclick="createLoadModalButtonClick()" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
 		<a onclick="saveAsJson()" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
 		<a onclick="exportPng()" href="javascript:void(0)"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
 	</div>
@@ -44,7 +44,7 @@
 	</div>
 
 	<!--Create Feature Modal-->
-	<div id="createFeatureModal" class="createFeatureModal">
+	<div id="featureModal" class="featureModal">
 		<form onsubmit="return createFeature();">
 			<label><b>Feature Name</b></label>
 			<input id="nameFeatureTextField" type="text">
@@ -52,6 +52,13 @@
 			<select id="featureTypeComboBox"></select>
 			<button id="createFeatureSubmitButton" type="submit">Create</button>
 		</form>
+	</div>
+
+	<!--Load File Modal-->
+	<div id="loadFileModal" class="loadFileModal">
+		<label><b>Select File</b></label>
+		<input id="fileInput" type="file" accept=".json">
+		<button id="loadFileSubmitButton" type="submit">Import</button>
 	</div>
 
 	<div class="canvas" id="canvas" style="margin-left: 200px; margin-top: 120px;">
@@ -123,8 +130,6 @@
 
 		}
 
-
-
 		function updateModel() {
 
 			document.getElementById('mySavedModel').innerHTML = parseModelToString(m1);
@@ -193,9 +198,9 @@
 	<script type="text/javascript" src="./js/Go.js"></script>
 	<script type="text/javascript" src="./js/GoFunction.js"></script>
 	<script type="text/javascript" src="./jQuery/jquery-3.2.1.js"></script>
-	<script type="text/javascript" src="./js/CreateFeatureModal.js"></script>
+	<script type="text/javascript" src="./js/CreateModals.js"></script>
 	<script type="text/javascript" src="./js/CreateFeatureScript.js"></script>
-
+	<script type="text/javascript" src="./js/LoadFileScript.js"></script>
 </body>
 
 </html>

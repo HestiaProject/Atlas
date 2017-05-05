@@ -1,4 +1,6 @@
-#createFeatureModal {
+/*Create Feature*/
+
+#featureModal {
     display: none;
     position: fixed;
     z-index: 3;
@@ -20,6 +22,38 @@
 }
 
 #createFeatureSubmitButton {
+    background-color: #225889;
+    color: #fff;
+    cursor: pointer;
+    width: 40%;
+    margin: 20px 30%;
+}
+
+
+/*Load file*/
+
+#loadFileModal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 74%;
+    top: 10%;
+    width: 250px;
+    height: 150px;
+    background-color: #fff;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+#fileInput {
+    display: block;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin: 2% 15%;
+}
+
+#loadFileSubmitButton {
     background-color: #225889;
     color: #fff;
     cursor: pointer;

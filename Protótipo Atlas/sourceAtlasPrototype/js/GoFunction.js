@@ -162,6 +162,8 @@
 		function save() {
 		    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
 		    myDiagram.isModified = false;
+			m1 = parseToModel(document.getElementById("mySavedModel").value);
+			document.getElementById('myModel').value = JSON.stringify(m1);
 		}
 
 		function load() {

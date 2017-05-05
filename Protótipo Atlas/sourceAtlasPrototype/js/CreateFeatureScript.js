@@ -6,7 +6,12 @@ function createFeature() {
     var feature = new Feature(name, type);
 
     // need a controler //just for test
-    var model = new Model(document.getElementById("fileNameTextField").value);
-    model.addFeature(feature);
+   
+   m1.addFeature(feature);
+   var str = JSON.stringify(m1);
+   document.getElementById('myModel').value = str;
+   var modelString =  parseModelToString(m1);
+   document.getElementById('mySavedModel').value = modelString;
+   load();
 
 }

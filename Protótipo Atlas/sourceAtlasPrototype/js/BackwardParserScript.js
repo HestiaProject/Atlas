@@ -11,6 +11,9 @@
 				var indexB = lines[i].indexOf("\", \"");
 				var indexC = lines[i].indexOf("\"category\":\"")+12;
 				var indexD = lines[i].lastIndexOf("\","); 
+				if (indexD ==-1 || indexD <= indexB)
+					var indexD = lines[i].lastIndexOf("\"}"); 
+				
 				var name = lines[i].slice(indexA,indexB);
 				var type = lines[i].slice(indexC,indexD);
 				m1.addFeature(new Feature(name, type));

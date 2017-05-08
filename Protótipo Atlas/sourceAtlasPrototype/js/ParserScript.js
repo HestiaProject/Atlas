@@ -8,7 +8,7 @@ function parseModelToString(model){
 var features = declareFeature(model.getFeatures());
 var associations = declareAssociation(model.getAssociations());
 var links = declareLink(model.getAssociations(),model.getFeatures());
-var alternative = declareAssociationAlternative(model.getFeatures());
+var alternative = declareAssociationAlternative(model.getFeatures(),model.getAssociations());
 var linkToLink = declareLinkToLink(model.getFeatures(),model.getAssociations());
 
 var begin = "{ \"class\": \"go.GraphLinksModel\",\n\"linkLabelKeysProperty\": \"labelKeys\",\n\"nodeDataArray\": [ ";
@@ -111,24 +111,18 @@ return mandOpc+alter+textAssociation;
 }
 
 
-function declareAssociationAlternative(listFeatures){ //declare all links to links, named as alt
+function declareAssociationAlternative(listFeatures,listAssociation){ //declare all links to links, named as alt
 
 	var textAlternative = "";
-	var cont = 0;
+	var listLA =  listAlternative(listFeatures,listAssociation);
+
+var aux = groupBy(listLA, 'parent');
 
 
-for (j = 0; j < listFeatures.length; j++) { // "for" to find the relation of the child feature
 
-		if (listFeatures[j].getType()=="alternative"){
-			cont++;
-			    	
-}
-
-	}
-
-for (i = 1; i <= Math.round(cont/2); i++) { 
+for (i = 0; i < aux.length; i++) { 
 		
-			    	textAlternative += ",\n{\"key\":\"Alt"+(i)+"\", \"category\":\"LinkLabel\"}";
+			    	textAlternative += ",\n{\"key\":\"Alt"+(i+1)+"\", \"category\":\"LinkLabel\"}";
 			    	
 }
 
@@ -140,32 +134,7 @@ return textAlternative;
 
 function declareLinkToLink(listFeatures,listAssociation){ //declares the link to link, shhowing them in the canvas.
 	var textLinkToLink ="";
-	var listFA = [];
-	var listLA = [];
-	var cont = 0;
-	var listAux = [];
-
-
-for (i = 0; i < listFeatures.length; i++) { 
-    
-	if (listFeatures[i].getType()=="alternative"){
-		listFA.push(listFeatures[i]);
-
-	}
-	
-  }
-
-  for (j = 0; j < listAssociation.length; j++) { 
-
-for (k = 0; k < listFA.length; k++) { 
-    
-    if (listAssociation[j].getChildName()==listFA[k].getName()){
-	listLA.push(listAssociation[j]);
-	}
-
-  }
-
-}
+	var listLA =  listAlternative(listFeatures,listAssociation);
 
 var aux = groupBy(listLA, 'parent');
 
@@ -174,7 +143,7 @@ for (x = 0; x < aux.length; x++) {
 	
 
 textLinkToLink += "\n{\"from\":\""+ aux[x][aux[x].length-1].getParentName()+"-"+aux[x][aux[x].length-1].getChildName()+"\", \"to\":\""+aux[x][0].getParentName()+"-"+aux[x][0].getChildName()+
-		"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
+		"\", \"labelKeys\":[ \"Alt"+(x+1)+ "\" ],\"category\":\"linkToLink\"},";
 
 	
 }
@@ -197,4 +166,32 @@ function groupBy(collection, property) {
         }
     }
     return result;
+}
+
+function listAlternative(listFeatures,listAssociation){
+var listFA = [];
+var listLA = [];
+
+for (i = 0; i < listFeatures.length; i++) { 
+    
+	if (listFeatures[i].getType()=="alternative"){
+		listFA.push(listFeatures[i]);
+
+	}
+	
+  }
+
+  for (j = 0; j < listAssociation.length; j++) { 
+
+for (k = 0; k < listFA.length; k++) { 
+    
+    if (listAssociation[j].getChildName()==listFA[k].getName()){
+	listLA.push(listAssociation[j]);
+	}
+
+  }
+
+}
+return listLA;
+
 }

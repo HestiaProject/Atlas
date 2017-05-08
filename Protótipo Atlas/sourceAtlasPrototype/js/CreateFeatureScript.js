@@ -1,4 +1,4 @@
-function createFeature() {
+document.getElementById("createFeatureSubmitButton").onclick = function(){
 
     var name = document.getElementById("nameFeatureTextField").value;
     var type = document.getElementById("featureTypeComboBox").value;
@@ -12,6 +12,10 @@ function createFeature() {
    document.getElementById('myModel').value = str;
    var modelString =  parseModelToString(m1);
    document.getElementById('mySavedModel').value = modelString;
+
+   var createFeatureModal = document.getElementById("featureModal");
+   createFeatureModal.style.display = "none";
+
    load();
 
 }

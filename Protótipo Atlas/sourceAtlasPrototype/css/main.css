@@ -1,6 +1,10 @@
 /*File Title*/
 
-.fileNameTextField {
+body {
+    background-color: #F1F1F1;
+}
+
+.modelName {
     font-size: 30px;
     top: 2%;
     left: 45%;
@@ -8,7 +12,7 @@
     background-color: #225889;
     border-style: none;
     color: #fff;
-    z-index: 2;
+    z-index: 4;
 }
 
 
@@ -21,8 +25,9 @@
     top: 0;
     left: 0;
     background-color: #225889;
+    border-bottom: 2px solid #e8e8e8;
     padding-left: 85%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .topBar a {
@@ -51,15 +56,8 @@
     position: fixed;
     top: 10%;
     left: 0px;
-	z-index:1;
+    z-index: 1;
     background-color: #000;
-}
-
-.association i {
-    /*Chrome Safari*/
-    -webkit-transform: rotate(90deg);
-    /* Firefox */
-    -moz-transform: rotate(90deg);
 }
 
 .sideBar a {
@@ -68,29 +66,28 @@
     padding: 2vh;
     color: #fff;
     /*font-size: 5vh;*/
-    font-size: 2vw;
+    /*font-size: 2vw;*/
     z-index: 1;
+}
+
+.fa-times{
+    color: #ff3527;
 }
 
 .sideBar a:hover {
     background-color: #225889;
 }
 
-.sideBar .material-icons {
-    /*font-size: 5.5vh;*/
-    font-size: 2.5vw;
-}
-
 
 /*Canvas*/
 
 .canvas {
-    top: 10%;
-    left: 10%;
-    bottom: 0px;
-    right: 0px;
+    /*top: 10%;*/
+    /*left: 10%;*/
+    /*bottom: 0px;*/
+    /*right: 0px;*/
     background-color: #fff;
-    height: 100%;
+    /*height: 100%;*/
     z-index: -3;
 }
 

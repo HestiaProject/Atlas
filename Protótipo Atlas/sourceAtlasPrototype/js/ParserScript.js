@@ -57,9 +57,9 @@ return textAssociation;
 function declareLink(listAssociation,listFeatures){
 
 	var textAssociation = "";
-	var mandOpc = "";
-	var alter = "";
 	var category = "";
+	var arrayManOp = [];
+	var arrayAlter = [];
 
 	for (i = 0; i < listAssociation.length; i++) {  
 
@@ -72,42 +72,35 @@ function declareLink(listAssociation,listFeatures){
 	}
 
 	if(category == "alternative"){
-		alter += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
-    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
-    alter += "}";
-    if (i!=(listAssociation.length-1)) {
-
-    	alter += ",";
-    }
-
+		arrayAlter.push("\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]}");
+    
 	}
+
+
 	if(category == "mandatory"){
-		mandOpc += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
-    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
-    mandOpc += "}";
-    if (i!=(listAssociation.length-1)) {
-
-    	mandOpc += ",";
-    }
-
+		arrayManOp.push("\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]}");
+   
 	}
-	if(category == "optional"){
-	mandOpc += "\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
-    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ]";
-    mandOpc += ",\"category\":\""+category+"\"}";
-    if (i!=(listAssociation.length-1)) {
 
-    	mandOpc += ",";
-    }
+
+	if(category == "optional"){
+	arrayManOp.push("\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
+    "\", \"labelKeys\":[ \""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName()+"\" ],\"category\":\""+category+"\"}");
+    
 	}
 
 
     
 }
 
-    	textAssociation += "\n]}\n";
+var text = arrayManOp.concat(arrayAlter);
 
-return mandOpc+alter+textAssociation;
+textAssociation += "\n]}\n";
+
+return text.join(",")+textAssociation;
+
 }
 
 

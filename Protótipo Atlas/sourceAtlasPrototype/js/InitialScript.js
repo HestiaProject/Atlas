@@ -4,7 +4,7 @@ var f1 = new Feature("a", "mandatory");
 			var f3 = new Feature("c", "optional");
 			var f2 = new Feature("b", "mandatory");
 			var f4 = new Feature("d", "alternative");
-			var f5 = new Feature("e", "optional");
+			var f5 = new Feature("e", "alternative");
 			var f6 = new Feature("f", "alternative");
 			var f7 = new Feature("g", "optional");
 			var f8 = new Feature("g5", "mandatory");
@@ -35,6 +35,6 @@ var f1 = new Feature("a", "mandatory");
 			m1.addAssociation(a7);
 			m1.addAssociation(a8);
 
-			document.getElementById('mySavedModel').innerHTML = parseModelToString(m1);
+			document.getElementById('mySavedModel').value = parseModelToString(m1);
 			
 }

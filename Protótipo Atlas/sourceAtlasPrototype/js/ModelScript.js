@@ -54,3 +54,30 @@ Model.prototype.findFeature = function(string){
 	return null;
 
 }
+
+Model.prototype.replace = function(f1,f2){
+
+	for(var i = 0;i < this.listFeatures.length;i++){
+		var feature = this.listFeatures[i];
+		if(f1.getName() == feature.getName){
+			this.listFeatures[i]=f2;
+			break;
+		}
+		
+	}
+
+}
+
+
+Model.prototype.updateFeature = function(f1){
+
+	for(var i = 0;i < this.listFeatures.length;i++){
+		var feature = this.listFeatures[i];
+		if(f1.getName() == feature.getName){
+			this.listFeatures[i]=f1;
+			break;
+		}
+		
+	}
+
+}

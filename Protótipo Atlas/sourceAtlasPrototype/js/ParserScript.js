@@ -167,30 +167,34 @@ for (k = 0; k < listFA.length; k++) {
 
 }
 
+var aux = groupBy(listLA, 'parent');
 
-for (l = 0; l < listLA.length; l++) { 
-    
-	for (m = 0; m < listLA.length; m++) { 
-    
-if (listAux.indexOf(listLA[m].getParentName()+"-"+listLA[m].getChildName()+" to" +listLA[l].getParentName()+"-"+listLA[l].getChildName())==(-1)){
+for (x = 0; x < aux.length; x++) { 
 
-    	listAux.push(listLA[l].getParentName()+"-"+listLA[l].getChildName()+" to" +listLA[m].getParentName()+"-"+listLA[m].getChildName());
+	
 
-    	if (listLA[m].getParentName()==listLA[l].getParentName() && listLA[m].getChildName()!=listLA[l].getChildName()){
-		cont++;
-		textLinkToLink += "\n{\"from\":\""+ listLA[m].getParentName()+"-"+listLA[m].getChildName()+"\", \"to\":\""+listLA[l].getParentName()+"-"+listLA[l].getChildName()+
+textLinkToLink += "\n{\"from\":\""+ aux[x][aux[x].length-1].getParentName()+"-"+aux[x][aux[x].length-1].getChildName()+"\", \"to\":\""+aux[x][0].getParentName()+"-"+aux[x][0].getChildName()+
 		"\", \"labelKeys\":[ \"Alt"+cont+ "\" ],\"category\":\"linkToLink\"},";
-	}
-	}
-    
 
 	
-	
-  }
-	
-  }
+}
+
 	return textLinkToLink;
 }
 
 
-
+function groupBy(collection, property) {
+    var i = 0, val, index,
+        values = [], result = [];
+    for (; i < collection.length; i++) {
+        val = collection[i][property];
+        index = values.indexOf(val);
+        if (index > -1)
+            result[index].push(collection[i]);
+        else {
+            values.push(val);
+            result.push([collection[i]]);
+        }
+    }
+    return result;
+}

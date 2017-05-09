@@ -69,6 +69,20 @@ Model.prototype.findFeature = function(string){
 
 }
 
+Model.prototype.contain = function(string){
+
+	for(var i = 0;i < this.listFeatures.length;i++){
+		var f1 = this.listFeatures[i];
+		if(f1.getName() == string){
+			return i;
+		}
+		
+	}
+	
+	return -1;
+
+}
+
 Model.prototype.replace = function(f1,f2){
 
 	for(var i = 0;i < this.listFeatures.length;i++){

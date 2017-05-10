@@ -1,4 +1,5 @@
 function validateModel(model){// i have to find out what the tool needs as return from this method.
+var message=[];
 
 var listFeatures = model.getFeatures();
 var listAssociation = model.getAssociations();
@@ -6,8 +7,28 @@ var tree=createTree(listFeatures, listAssociation);
 var deadNodes = searchDeadNode(listFeatures,tree);
 var oneRoot = checkRoot(tree);
 var numberAssociation = checkAssociations(tree,listAssociation);
+var numberAlternatives = checkAlternatives(tree);
 
-console.log(numberAssociation);
+if(deadNodes.length!=0){
+	message.push("Features "+deadNodes.join(", ")+" não estão de acordo com a notação");
+}
+
+if(numberAlternatives.length!=0){
+	message.push("Features Alternativas "+numberAlternatives.join(", ")+" não podem estar em um grupo de alternativas de apenas 1 feature");
+
+}
+
+if(!oneRoot){
+	message.push("Em cada modelo pode haver apenas 1 feature root");
+
+}
+
+if(!numberAssociation){
+	message.push("Não pode haver relacionamentos sem features pais ou filhas");
+
+}
+
+console.log(message.join(", ")+".");
 
 }
 
@@ -16,6 +37,7 @@ console.log(numberAssociation);
 * Is takes the name from the feature list, the parent and child from the association list
 * each node struture are:
 * {name: "nameFeature",
+   type: "typeFeature",
    parent: "parentName",
    children: [collectionChildren],
    visited: false}
@@ -27,7 +49,7 @@ var node;
 
 for (i=0;i<listFeatures.length;i++){
 	
-        node = {name: listFeatures[i].getName(), parents: "", children: [], visited:false}
+        node = {name: listFeatures[i].getName(),type:listFeatures[i].getType(), parents: "", children: [], visited:false}
 
 
  for (j=0;j<listAssociation.length;j++){
@@ -73,7 +95,7 @@ for (j=0;j<listFeatures.length;j++){
 
 
 	if (!findNodeByName(listFeatures[j].getName(),tree)){
-		deadNodes.push(listFeatures[j]);
+		deadNodes.push(listFeatures[j].getName());
 	}
 }
 return deadNodes;
@@ -110,12 +132,47 @@ return result;
 
 
 
+function groupBy(collection, property) {
+    var i = 0, val, index,
+        values = [], result = [];
+    for (; i < collection.length; i++) {
+        val = collection[i][property];
+        index = values.indexOf(val);
+        if (index > -1)
+            result[index].push(collection[i]);
+        else {
+            values.push(val);
+            result.push([collection[i]]);
+        }
+    }
+    return result;
+}
 
 
 
 
+function checkAlternatives(tree){ // Check if there is a group of alternatives formed just by 1 alternative feature.
+var listAlternatives =[];
+var cont=0;
+var result=[];
+
+for (var i = 0; i<tree.length;i++){
+	if (tree[i].type=="alternative"){
+		listAlternatives.push(tree[i]);
+	}
+}
+
+var alternatives = groupBy(listAlternatives,"parents");
 
 
+for(var j =0; j< alternatives.length; j++){
+	if (alternatives[j].length<2){
+		result.push(alternatives[j][0].name);
+	}
+}
+return result;
+
+}
 
 
 

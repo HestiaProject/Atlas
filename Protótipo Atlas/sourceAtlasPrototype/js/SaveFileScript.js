@@ -1,11 +1,12 @@
 
 function saveAsJson() {
-
+			
 			var modelName = document.getElementById('modelName').value;
-
+		
 			if (modelName.isEmpty()) {
 				alert("Insert the model name!");
 			} else {
+				save2();
 				var goJson = document.getElementById('mySavedModel').value;
 				downloadContent(modelName, goJson);
 			}

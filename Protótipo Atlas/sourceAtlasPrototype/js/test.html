@@ -21,7 +21,7 @@ Click me to display the parsing result.</button>
 
 <p id="demo"></p>
 
-<button type="button" onclick="document.getElementById('demo3').innerHTML = validateModel(m1)">
+<button type="button" onclick="document.getElementById('demo3').innerHTML = validation()">
 Click me to validate the model.</button>
 
 <p id="demo3"></p>
@@ -122,7 +122,11 @@ function parser(){
    return rpl;
 }
 
+function validation(){
 
+	result = validateModel(m1);
+   return result;
+}
 
 function backParser(){
 

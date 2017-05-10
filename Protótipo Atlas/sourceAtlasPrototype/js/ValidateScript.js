@@ -9,27 +9,30 @@ var oneRoot = checkRoot(tree);
 var numberAssociation = checkAssociations(tree,listAssociation);
 var numberAlternatives = checkAlternatives(tree);
 
-if(deadNodes.length!=0){
+if(deadNodes.length!=0){ //message to when dead nodes are founded
 	message.push("Features "+deadNodes.join(", ")+" não estão de acordo com a notação");
 }
 
-if(numberAlternatives.length!=0){
+if(numberAlternatives.length!=0){ //message to when the number of alternatives are wrong
 	message.push("Features Alternativas "+numberAlternatives.join(", ")+" não podem estar em um grupo de alternativas de apenas 1 feature");
 
 }
 
-if(!oneRoot){
+if(!oneRoot){ //message to when the number of root are wrong
 	message.push("Em cada modelo pode haver apenas 1 feature root");
 
 }
 
-if(!numberAssociation){
+if(!numberAssociation){ //message when the number of associations are wrong
 	message.push("Não pode haver relacionamentos sem features pais ou filhas");
 
 }
 
-console.log(message.join(", ")+".");
-
+if (message.length==0){
+	return "Feature Model Validated!";
+}else{
+	return message.join(", ")+".";
+}
 }
 
 /*

@@ -52,7 +52,7 @@ body {
 
 .sideBar {
     height: 100%;
-    width: 5%;
+    width: 70px;
     position: fixed;
     top: 10%;
     left: 0px;

@@ -22,7 +22,7 @@
 
 	<!--Top Bar-->
 	<div class="topBar">
-		
+
 		<a onclick="createLoadModalButtonClick()" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
 		<a onclick="saveAsJson()" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
 		<a onclick="exportPng()" href="javascript:void(0)"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
@@ -40,7 +40,7 @@
 			<i class="fa fa-square-o fa-stack-2x"></i>
 			<i class="fa fa-times fa-stack-1x"></i>
 		</a>
-		<a class="fa-stack fa-lg" onclick="" href="javascript:void(0);">
+		<a class="fa-stack fa-lg" onclick="createAssociationModalButtonClick()" href="javascript:void(0);">
 			<span class="tooltip">Create Association</span>
 			<i class="fa fa-arrows-h fa-stack-2x" ></i>				
 		</a>
@@ -53,20 +53,16 @@
 			<span class="tooltip">Validate Model</span>
 			<i class="fa fa-check " ></i>
 		</a>
-		
-		
+
+
 	</div>
 
 
-
-	<!--Right Click Menu
-	<div class="rightClickMenuCanvas" id="rightClickMenuCanvas">
-		<li><a onclick="" href="javascript:void(0);">Create Feature</a></li>
-	</div>
-	-->
-	
 	<!--Create Feature Modal-->
 	<div id="featureModal" class="featureModal">
+		<a class="closeButton" onclick="closeFeatureModalButtonClick();" href="javascript:void(0);">
+			<i class="fa fa-times"></i>
+		</a>
 		<label><b>Feature Name</b></label>
 		<input id="nameFeatureTextField" type="text">
 		<label><b>Feature type</b></label>
@@ -74,8 +70,24 @@
 		<button id="createFeatureSubmitButton" type="submit">Create</button>
 	</div>
 
+	<!--Create Association Modal-->
+	<div id="associationModal" class="associationModal">
+		<a class="closeButton" onclick="closeAssociationModalButtonClick();" href="javascript:void(0);">
+			<i class="fa fa-times"></i>
+		</a>
+		<label><b>Feature 1</b></label>
+		<select id="feature1ComboBox"></select>
+		<label><b>Feature 2</b></label>
+		<select id="feature2ComboBox"></select>
+		<button id="createAssociationSubmitButton" type="submit">Create</button>
+	</div>
+
+
 	<!--Load File Modal-->
 	<div id="loadFileModal" class="loadFileModal">
+		<a class="closeButton" onclick="closeFileModalButtonClick();" href="javascript:void(0);">
+			<i class="fa fa-times"></i>
+		</a>
 		<label><b>Select File</b></label>
 		<input id="fileInput" type="file" accept=".json">
 		<button id="loadFileSubmitButton" type="submit">Import</button>
@@ -117,11 +129,11 @@
 			else
 				e.style.display = 'block';
 		}
-		
-		function validate(){
-		save2();
-		var str = validateModel(m1);
-		alert(str);
+
+		function validate() {
+			save2();
+			var str = validateModel(m1);
+			alert(str);
 		}
 	</script>
 
@@ -144,9 +156,10 @@
 	<script type="text/javascript" src="./js/InitialScript.js"></script>
 	<script type="text/javascript" src="./js/FileNameScript.js"></script>
 	<script type="text/javascript" src="./js/ValidateScript.js"></script>
-	
-	
-	
+	<script type="text/javascript" src="./js/CreateAssociationScript.js"></script>
+	<script type="text/javascript" src="./js/CloseModalsScript.js"></script>
+
+
 </body>
 
 </html>

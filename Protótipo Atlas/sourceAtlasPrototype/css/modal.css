@@ -1,14 +1,12 @@
 /*Create Feature*/
 
-#featureModal {
+.featureModal {
     display: none;
     position: fixed;
-    z-index: 3;
-    left: 6%;
-    top: 10%;
-    width: 250px;
-    height: 150px;
-    background-color: #fff;
+    left:5%;
+    z-index: 5;
+    color: #fff;
+    background-color: #429dff;
     border-style: solid;
     border-radius: 10px;
 }
@@ -31,19 +29,17 @@
 
 
 /*Load file*/
-
-#loadFileModal {
+.loadFileModal {
     display: none;
     position: fixed;
-    z-index: 3;
-    left: 74%;
-    top: 10%;
-    width: 250px;
-    height: 150px;
-    background-color: #fff;
+    left: 75%;
+    z-index: 5;
+    color: #fff;
+    background-color: #429dff;
     border-style: solid;
     border-radius: 10px;
 }
+
 
 #fileInput {
     display: block;
@@ -59,4 +55,50 @@
     cursor: pointer;
     width: 40%;
     margin: 20px 30%;
+}
+
+
+/*Association Modal*/
+
+.associationModal {
+    display: none;
+    position: fixed;
+    left:5%;
+    top: 30%;
+    z-index: 5;
+    color: #fff;
+    background-color: #429dff;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+#feature1ComboBox, #feature2ComboBox {
+    display: block;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin: 2% 15%;
+}
+
+#createAssociationSubmitButton {
+    background-color: #225889;
+    color: #fff;
+    cursor: pointer;
+    width: 40%;
+    margin: 20px 30%;
+}
+
+
+/* Close Button */
+
+.closeButton .fa-times {
+    color: #fff;
+    float: right;
+    padding-right: 5px;    
+}
+
+.closeButton .fa-times:hover, .closeButton .fa-times:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }

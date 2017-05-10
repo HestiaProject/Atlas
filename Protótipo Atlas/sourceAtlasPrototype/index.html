@@ -22,6 +22,7 @@
 
 	<!--Top Bar-->
 	<div class="topBar">
+		
 		<a onclick="createLoadModalButtonClick()" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
 		<a onclick="saveAsJson()" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
 		<a onclick="exportPng()" href="javascript:void(0)"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
@@ -48,6 +49,12 @@
 			<i class="fa fa-arrows-h fa-stack-2x " ></i>
 			<i class="fa fa-times fa-stack-1x text-danger"></i>
 		</a>
+		<a class="fa-stack fa-lg" onclick="validate()" href="javascript:void(0);">
+			<span class="tooltip">Validate Model</span>
+			<i class="fa fa-check " ></i>
+		</a>
+		
+		
 	</div>
 
 
@@ -110,6 +117,12 @@
 			else
 				e.style.display = 'block';
 		}
+		
+		function validate(){
+		save2();
+		var str = validateModel(m1);
+		alert(str);
+		}
 	</script>
 
 	<!--Load Scripts-->
@@ -130,6 +143,10 @@
 	<script type="text/javascript" src="./js/SaveFileScript.js"></script>
 	<script type="text/javascript" src="./js/InitialScript.js"></script>
 	<script type="text/javascript" src="./js/FileNameScript.js"></script>
+	<script type="text/javascript" src="./js/ValidateScript.js"></script>
+	
+	
+	
 </body>
 
 </html>

@@ -6,10 +6,14 @@ function createFeatureModalButtonClick() {
     var option;
 
 
-    for (let item in FeatureType) {
-        option = document.createElement("option");
-        option.text = item;
-        comboBox.add(option);
+    if (comboBox.options.length == 3) {
+
+    } else {
+        for (let item in FeatureType) {
+            option = document.createElement("option");
+            option.text = item;
+            comboBox.add(option);
+        }
     }
 
     createFeatureModal.style.display = "block";
@@ -18,5 +22,5 @@ function createFeatureModalButtonClick() {
 
 function createLoadModalButtonClick() {
     var createLoadModal = document.getElementById("loadFileModal");
-    createLoadModal.style.display = "block";    
+    createLoadModal.style.display = "block";
 }

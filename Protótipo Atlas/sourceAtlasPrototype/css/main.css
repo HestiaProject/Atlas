@@ -71,7 +71,13 @@ body {
 }
 
 .fa-times{
-    color: #ff3527;
+    color: #ff3527;   
+}
+
+#removeFeatureTimes .fa-times{   
+    
+    bottom:16.5px;
+
 }
 
 .sideBar a:hover {
@@ -204,3 +210,4 @@ body {
 #myDiagramDiv {
     z-index: 0;
 }
+

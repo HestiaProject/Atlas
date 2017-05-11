@@ -1,7 +1,8 @@
 document.getElementById("createFeatureSubmitButton").onclick = function(){
 
     var name = document.getElementById("nameFeatureTextField").value;
-    var type = document.getElementById("featureTypeComboBox").value;
+    var type = document.getElementById("featureTypeComboBox").value.toLowerCase();
+
 
 
     if(name == ""){

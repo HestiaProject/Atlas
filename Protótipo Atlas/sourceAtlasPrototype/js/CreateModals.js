@@ -79,4 +79,3 @@ function createLoadModalButtonClick() {
     createLoadModal.style.display = "block";
 }
 
-

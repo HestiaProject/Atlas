@@ -16,9 +16,9 @@ function createFeatureModalButtonClick() {
         }
     }
 
-    createFeatureModal.style.display = "block";   
+    createFeatureModal.style.display = "block";
     document.getElementById("nameFeatureTextField").focus();
-    
+
 }
 
 // Create Association Modal
@@ -30,6 +30,16 @@ function createAssociationModalButtonClick() {
 
     var feature1Name;
     var feature2Name;
+    var option;
+    var listCanAssociate;
+
+    for (var i = feature1ComboBox.options.length - 1; i >= 0; i--) {
+        feature1ComboBox.remove(i);
+    }
+
+    for (var i = feature2ComboBox.options.length - 1; i >= 0; i--) {
+        feature2ComboBox.remove(i);
+    }
 
     m1.getFeatures().forEach(function (feature) {
         feature1Name = feature.getName();
@@ -38,8 +48,28 @@ function createAssociationModalButtonClick() {
         feature1ComboBox.add(option);
     });
 
-    createAssociationModal.style.display = "block";
+    //Resquest all feature names that can be associate with the first feature
+    listCanAssociate = canAssociate(feature1ComboBox.value);
 
+    //iterate over list and create a second ComboBox
+    if (listCanAssociate.length > 0) {
+        listCanAssociate.forEach(function (feature2Name) {
+            option = document.createElement("option");
+            option.text = feature2Name;
+            feature2ComboBox.add(option);
+        });
+    }
+
+    if(feature2ComboBox.options.length > 0){
+        document.getElementById("createAssociationSubmitButton").disabled = false;
+        feature2ComboBox.disabled = false;
+    }else{
+        document.getElementById("createAssociationSubmitButton").disabled = true;
+        feature2ComboBox.disabled = true;
+    }
+
+    createAssociationModal.style.display = "block";
+    
 }
 
 
@@ -48,3 +78,5 @@ function createLoadModalButtonClick() {
     var createLoadModal = document.getElementById("loadFileModal");
     createLoadModal.style.display = "block";
 }
+
+

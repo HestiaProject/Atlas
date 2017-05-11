@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="./css/main.css" />
 	<link rel="stylesheet" href="./css/modal.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
 </head>
 
 <body onload="firstLoad()">
@@ -22,7 +21,6 @@
 
 	<!--Top Bar-->
 	<div class="topBar">
-
 		<a onclick="createLoadModalButtonClick()" href="javascript:void(0);"><span class="tooltip">Load Model</span><i class="fa fa-upload"></i></a>
 		<a onclick="saveAsJson()" href="javascript:void(0);"><span class="tooltip">Save as .json</span><i class="fa fa-save"></i></a>
 		<a onclick="exportPng()" href="javascript:void(0)"><span class="tooltip">Save as .png</span><i class="fa fa-file-image-o"></i></a>
@@ -40,7 +38,7 @@
 			<i class="fa fa-square-o fa-stack-2x"></i>
 			<i class="fa fa-times fa-stack-1x"></i>
 		</a>
-		<a class="fa-stack fa-lg" onclick="createAssociationModalButtonClick()" href="javascript:void(0);">
+		<a class="fa-stack fa-lg" onclick="createAssociationModalButtonClick();" href="javascript:void(0);">
 			<span class="tooltip">Create Association</span>
 			<i class="fa fa-arrows-h fa-stack-2x" ></i>				
 		</a>
@@ -49,16 +47,11 @@
 			<i class="fa fa-arrows-h fa-stack-2x " ></i>
 			<i class="fa fa-times fa-stack-1x text-danger"></i>
 		</a>
-		<a class="fa-stack fa-lg" onclick="validate()" href="javascript:void(0);">
-			<span class="tooltip">Validate Model</span>
-			<i class="fa fa-check " ></i>
-		</a>
-
-
 	</div>
 
 
 	<!--Create Feature Modal-->
+
 	<div id="featureModal" class="featureModal">
 		<a class="closeButton" onclick="closeFeatureModalButtonClick();" href="javascript:void(0);">
 			<i class="fa fa-times"></i>
@@ -70,7 +63,9 @@
 		<button id="createFeatureSubmitButton" type="submit">Create</button>
 	</div>
 
+
 	<!--Create Association Modal-->
+
 	<div id="associationModal" class="associationModal">
 		<a class="closeButton" onclick="closeAssociationModalButtonClick();" href="javascript:void(0);">
 			<i class="fa fa-times"></i>
@@ -82,8 +77,8 @@
 		<button id="createAssociationSubmitButton" type="submit">Create</button>
 	</div>
 
-
 	<!--Load File Modal-->
+
 	<div id="loadFileModal" class="loadFileModal">
 		<a class="closeButton" onclick="closeFileModalButtonClick();" href="javascript:void(0);">
 			<i class="fa fa-times"></i>
@@ -92,6 +87,7 @@
 		<input id="fileInput" type="file" accept=".json">
 		<button id="loadFileSubmitButton" type="submit">Import</button>
 	</div>
+
 
 	<div class="canvas" id="canvas" style="margin-left: 5%; margin-top: 5%;">
 
@@ -129,16 +125,10 @@
 			else
 				e.style.display = 'block';
 		}
-
-		function validate() {
-			save2();
-			var str = validateModel(m1);
-			alert(str);
-		}
 	</script>
 
 	<!--Load Scripts-->
-	<script type="text/javascript" src=".\js\CancelMenu.js"></script>
+	<script type="text/javascript" src="./js/CancelMenu.js"></script>
 	<script type="text/javascript" src="./js/SaveScript.js"></script>
 	<script type="text/javascript" src="./js/ModelScript.js"></script>
 	<script type="text/javascript" src="./js/FeatureScript.js"></script>
@@ -155,11 +145,9 @@
 	<script type="text/javascript" src="./js/SaveFileScript.js"></script>
 	<script type="text/javascript" src="./js/InitialScript.js"></script>
 	<script type="text/javascript" src="./js/FileNameScript.js"></script>
-	<script type="text/javascript" src="./js/ValidateScript.js"></script>
 	<script type="text/javascript" src="./js/CreateAssociationScript.js"></script>
 	<script type="text/javascript" src="./js/CloseModalsScript.js"></script>
-
-
+	<script type="text/javascript" src="./js/CreateAssociationSelectListener.js"></script>
 </body>
 
 </html>

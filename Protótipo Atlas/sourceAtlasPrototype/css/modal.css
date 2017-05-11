@@ -3,12 +3,19 @@
 .featureModal {
     display: none;
     position: fixed;
-    left:5%;
+    left: 5%;
     z-index: 5;
     color: #fff;
     background-color: #429dff;
     border-style: solid;
     border-radius: 10px;
+}
+
+.featureModal label {
+    display: block;
+    width: 70%;
+    box-sizing: border-box;
+    margin: 3% 15%;
 }
 
 #nameFeatureTextField, #featureTypeComboBox {
@@ -29,6 +36,7 @@
 
 
 /*Load file*/
+
 .loadFileModal {
     display: none;
     position: fixed;
@@ -40,6 +48,12 @@
     border-radius: 10px;
 }
 
+.loadFileModal label {
+    display: block;
+    width: 70%;
+    box-sizing: border-box;
+    margin: 3% 15%;
+}
 
 #fileInput {
     display: block;
@@ -62,14 +76,21 @@
 
 .associationModal {
     display: none;
-    position: fixed;
-    left:5%;
+    position: fixed;    
+    left: 5%;
     top: 30%;
     z-index: 5;
     color: #fff;
     background-color: #429dff;
     border-style: solid;
     border-radius: 10px;
+}
+
+.associationModal label {
+    display: block;
+    width: 70%;
+    box-sizing: border-box;
+    margin: 3% 15%;
 }
 
 #feature1ComboBox, #feature2ComboBox {
@@ -94,7 +115,7 @@
 .closeButton .fa-times {
     color: #fff;
     float: right;
-    padding-right: 5px;    
+    padding-right: 5px;
 }
 
 .closeButton .fa-times:hover, .closeButton .fa-times:focus {

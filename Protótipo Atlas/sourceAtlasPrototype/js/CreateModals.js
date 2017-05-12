@@ -17,7 +17,8 @@ function createFeatureModalButtonClick() {
     }
 
     createFeatureModal.style.display = "block";
-    document.getElementById("nameFeatureTextField").focus();
+    createFeatureModal.focus();
+    // document.getElementById("nameFeatureTextField").focus();
 
 }
 
@@ -69,6 +70,7 @@ function createAssociationModalButtonClick() {
     }
 
     createAssociationModal.style.display = "block";
+    createAssociationModal.focus();
     
 }
 
@@ -77,5 +79,6 @@ function createAssociationModalButtonClick() {
 function createLoadModalButtonClick() {
     var createLoadModal = document.getElementById("loadFileModal");
     createLoadModal.style.display = "block";
+    createLoadModal.focus();
 }
 

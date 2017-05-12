@@ -100,12 +100,16 @@
 		                                    var size = true;
 		                                    while (size) {
 		                                        var fName = prompt("Please enter a new name:", selnode.data.key);
-												if(m1.contain(fName)==-1){	
+												if(m1.contain(fName.trim())!=-1){	
+												alert("Name already taken!");
+												}else{
 		                                        if (fName.length <= 30)
 		                                            size = false;
-												}
+												else
+													alert("Name must be 30 characters or less!");
 		                                    }
-		                                    if (fName == null || fName == "") {
+											}
+		                                    if (fName == null || fName.trim() == "") {
 
 		                                    } else {
 
@@ -127,12 +131,16 @@
 		                                    var size = true;
 		                                    while (size) {
 		                                        var fName = prompt("Please enter a new name:", "New Feature");
-		                                        if(m1.contain(fName)==-1){													
+		                                        if(m1.contain(fName.trim())!=-1){	
+												alert("Name already taken!");
+												}else{
 												if (fName.length <= 30)
 		                                            size = false;
+												else
+													alert("Name must be 30 characters or less!");
 												}
 		                                    }
-		                                    if (fName == null || fName == "") {
+		                                    if (fName == null || fName.trim() == "") {
 
 		                                    } else {
 
@@ -339,7 +347,7 @@
 		}
 
 		function load() {
-
+			
 		    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
 

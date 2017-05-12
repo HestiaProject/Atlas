@@ -65,6 +65,7 @@ document.getElementById("createAssociationSubmitButton").onclick = function(){
     if(feature1 != undefined && feature2 !=undefined){
         association = new Association(feature1,feature2)
         m1.addAssociation(association);
+		save();
     }   
 
     document.getElementById("associationModal").style.display = "none";

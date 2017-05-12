@@ -25,14 +25,14 @@
     function toggleMenuOn() {
         if (menuState !== 1) {
             menuState = 1;
-            menu.classList.add(active);
+           // menu.classList.add(active);
         }
     }
 
     function toggleMenuOff() {
         if (menuState !== 0) {
             menuState = 0;
-            menu.classList.remove(active);
+           // menu.classList.remove(active);
         }
     }
 
@@ -40,8 +40,8 @@
     function positionMenu(e) {
         var x = e.clientX,
             y = e.clientY;
-        menu.style.top = (y + 20) + 'px';
-        menu.style.left = (x + 20) + 'px';
+      //  menu.style.top = (y + 20) + 'px';
+       // menu.style.left = (x + 20) + 'px';
     }
 
     function clickListener() {

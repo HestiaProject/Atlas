@@ -3,35 +3,36 @@ var message=[];
 
 var listFeatures = model.getFeatures();
 var listAssociation = model.getAssociations();
-var tree=createTree(listFeatures, listAssociation);
+var tree=createFlatArray(listFeatures, listAssociation);
 var deadNodes = searchDeadNode(listFeatures,tree);
 var oneRoot = checkRoot(tree);
-var numberAssociation = checkAssociations(tree,listAssociation);
+//var numberAssociation = checkAssociations(tree,listAssociation);
 var numberAlternatives = checkAlternatives(tree);
 
+if(oneRoot.length!=1){ //message to when the number of root are wrong
+	message.push("The model do not allow more than 1 root: \""+oneRoot.join("\", \"")+"\"");
+
+}
+
 if(deadNodes.length!=0){ //message to when dead nodes are founded
-	message.push("Features "+deadNodes.join(", ")+" não estão de acordo com a notação");
+	message.push("Features \""+deadNodes.join("\", \"")+"\" must have a parent");
 }
 
 if(numberAlternatives.length!=0){ //message to when the number of alternatives are wrong
-	message.push("Features Alternativas "+numberAlternatives.join(", ")+" não podem estar em um grupo de alternativas de apenas 1 feature");
+	message.push("Features \""+numberAlternatives.join("\", \"")+"\" could not be an alternative group formed by just 1 feature");
 
 }
 
-if(!oneRoot){ //message to when the number of root are wrong
-	message.push("Em cada modelo pode haver apenas 1 feature root");
+// if(!numberAssociation){ //message when the number of associations are wrong
+// 	message.push("Relations without parent or child are not allowed");
 
-}
+// }
 
-if(!numberAssociation){ //message when the number of associations are wrong
-	message.push("Não pode haver relacionamentos sem features pais ou filhas");
-
-}
-
+//creatreTree(tree);
 if (message.length==0){
 	return "Feature Model Validated!";
 }else{
-	return message.join(", ")+".";
+	return message.join(",\n")+".";
 }
 }
 
@@ -46,7 +47,7 @@ if (message.length==0){
    visited: false}
 * 
 */
-function createTree(listFeatures,listAssociation){
+function createFlatArray(listFeatures,listAssociation){
 var tree = [];
 var node;
 
@@ -105,18 +106,14 @@ return deadNodes;
 }
 
 function checkRoot(tree){ // check if there is only one root in the tree
-var result = true,
-cont =0;
+var result = [];
 
 for(var i = 0; i < tree.length; i++){
 if(tree[i].parents==""){
-	cont++;
+	result.push(tree[i].name);
 }
 }
 
-if (cont!=1){
-	result= false;
-}
 	return result;
 }
 
@@ -177,9 +174,69 @@ return result;
 
 }
 
+function findRoot(tree){
+	var result;
+
+for(var i = 0; i < tree.length; i++){
+if(tree[i].parents==""){
+	result=tree[i];
+}
+}
+
+	return result;
+}
+/*
+function creatreTree(flatTree){
+
+var rootNode=findRoot(flatTree);
+var tree = new Tree(rootNode.name);
+
+for(var i = 0; i < flatTree.length; i++){
+	if (rootNode.name!=flatTree[i].name){
+		if (rootNode.name==flatTree[i].parents) {
+			tree._root.children.push(new Node(flatTree[i].name,flatTree[i].parents));
+		}
+		for(var j = 0; j < tree._root.children.length; j++){
+if (tree._root.children[j].name==flatTree[i].parents) {
+			tree._root.children[j].children.push(new Node(flatTree[i].name,flatTree[i].parents));
+			console.log(flatTree[i].name);
+		}
+
+
+		}
+
+	}
+}
+
+console.log(JSON.stringify(tree._root));
+
+tree.traverseDF(function(node) {
+    console.log(node.data);
+});
+
+tree._root.children.push(new Node('two'));
+tree._root.children[0].parent = tree;
+ 
+tree._root.children.push(new Node('three'));
+tree._root.children[1].parent = tree;
+ 
+tree._root.children.push(new Node('four'));
+tree._root.children[2].parent = tree;
+ 
+tree._root.children[0].children.push(new Node('five'));
+tree._root.children[0].children[0].parent = tree._root.children[0];
+ 
+tree._root.children[0].children.push(new Node('six'));
+tree._root.children[0].children[1].parent = tree._root.children[0];
+ 
+tree._root.children[2].children.push(new Node('seven'));
+tree._root.children[2].children[0].parent = tree._root.children[2];
 
 
 
+}
+
+ 
 
 
 

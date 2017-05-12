@@ -347,7 +347,7 @@
 		}
 
 		function load() {
-
+			
 		    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
 

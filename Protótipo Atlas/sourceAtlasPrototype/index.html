@@ -47,6 +47,10 @@
 			<i class="fa fa-arrows-h fa-stack-2x " ></i>
 			<i class="fa fa-times fa-stack-1x text-danger"></i>
 		</a>
+		<a class="fa-stack fa-lg" onclick="validate()" href="javascript:void(0);">
+			<span class="tooltip">Validate Model</span>
+			<i class="fa fa-check " ></i>
+		</a>
 	</div>
 
 
@@ -125,6 +129,11 @@
 			else
 				e.style.display = 'block';
 		}
+		function validate(){
+		save2();
+		var str = validateModel(m1);
+		alert(str);
+		}
 	</script>
 
 	<!--Load Scripts-->
@@ -148,6 +157,8 @@
 	<script type="text/javascript" src="./js/CreateAssociationScript.js"></script>
 	<script type="text/javascript" src="./js/CloseModalsScript.js"></script>
 	<script type="text/javascript" src="./js/CreateAssociationSelectListener.js"></script>
+	<script type="text/javascript" src="./js/ValidateScript.js"></script>
+
 </body>
 
 </html>

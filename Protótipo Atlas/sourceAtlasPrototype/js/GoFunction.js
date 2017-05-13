@@ -44,6 +44,13 @@
 		                    click: function() {
 		                        createFeatureModalButtonClick()
 		                    }
+		                }),
+						
+						$("ContextMenuButton",
+		                $(go.TextBlock, "New Association"), {
+		                    click: function() {
+		                        createAssociationModalButtonClick()
+		                    }
 		                })
 		        );
 
@@ -103,15 +110,15 @@
 												if(m1.contain(fName.trim())!=-1){	
 												alert("Name already taken!");
 												}else{
-		                                        if (fName.length <= 30)
+		                                        if (fName.length <= 30 && fName.trim() != "")
 		                                            size = false;
 												else
-													alert("Name must be 30 characters or less!");
+													alert("You must enter a name with 30 characters or less!");
+												}
 		                                    }
-											}
-		                                    if (fName == null || fName.trim() == "") {
+		                                    if (fName == null) {
 
-		                                    } else {
+		                                    }else {
 
 		                                        var f1 = m1.findFeature(selnode.data.key);
 		                                        f1.setName(fName);
@@ -134,13 +141,13 @@
 		                                        if(m1.contain(fName.trim())!=-1){	
 												alert("Name already taken!");
 												}else{
-												if (fName.length <= 30)
+												if (fName.length <= 30 && fName.trim() != "")
 		                                            size = false;
 												else
-													alert("Name must be 30 characters or less!");
+													alert("You must enter a name with 30 characters or less!");
 												}
 		                                    }
-		                                    if (fName == null || fName.trim() == "") {
+		                                    if (fName == null) {
 
 		                                    } else {
 
@@ -319,7 +326,7 @@
 		    var img = myDiagram.makeImageData({
 		        background: "white",
 		        returnType: "string",
-		        size: new go.Size(1800, NaN)
+		        size: new go.Size(1800, 1400)
 		    });
 
 		    img = img.replace('data:image/png;base64,', '');

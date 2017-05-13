@@ -15,11 +15,12 @@ Model.prototype.addFeature= function(feature){
 
 Model.prototype.removeFeature = function(feature){
     
-    var featureIndex = this.listFeatures.indexOf(feature);
+    this.removeAssociation(feature);
+	var featureIndex = this.listFeatures.indexOf(feature);
     
     this.listFeatures.splice(featureIndex,1);
 	
-	this.removeAssociation(feature);
+	
 	
 
 }
@@ -30,6 +31,7 @@ Model.prototype.removeAssociation = function(feature){
 		 var a = this.listAssociations[i];
 	 if(a.getParentName() == feature.getName() || a.getChildName() == feature.getName() ){
 			 this.listAssociations.splice(i,1);
+			 i =0;
 	 }
     }
 }
@@ -60,7 +62,7 @@ Model.prototype.findFeature = function(string){
 
 	for(var i = 0;i < this.listFeatures.length;i++){
 		var f1 = this.listFeatures[i];
-		if(f1.getName() == string){
+		if(f1.getName().toUpperCase() == string.toUpperCase()){
 			return f1;
 		}
 		
@@ -73,7 +75,7 @@ Model.prototype.contain = function(string){
 
 	for(var i = 0;i < this.listFeatures.length;i++){
 		var f1 = this.listFeatures[i];
-		if(f1.getName() == string){
+		if(f1.getName().toUpperCase() == string.toUpperCase()){
 			return i;
 		}
 		

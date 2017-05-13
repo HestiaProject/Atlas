@@ -10,11 +10,29 @@ var associations = declareAssociation(model.getAssociations());
 var links = declareLink(model.getAssociations(),model.getFeatures());
 var alternative = declareAssociationAlternative(model.getFeatures(),model.getAssociations());
 var linkToLink = declareLinkToLink(model.getFeatures(),model.getAssociations());
+var featurePlusAssociation = featureAssociation(features,associations);
 
 var begin = "{ \"class\": \"go.GraphLinksModel\",\n\"linkLabelKeysProperty\": \"labelKeys\",\n\"nodeDataArray\": [ ";
 
-return begin+features+associations+alternative+linkToLink+links;
 
+return begin+featurePlusAssociation+alternative+linkToLink+links;
+
+}
+
+function featureAssociation(features,associations){
+var featuresassociation="";
+
+
+if (features.length>0 && associations.length>0){
+featuresassociation="\n"+features.join(",\n")+",\n"+associations.join(",\n");
+}
+if (features.length>0 && associations.length==0){
+featuresassociation="\n"+features.join(",\n");
+}
+if (features.length==0 && associations.length>0){
+featuresassociation="\n"+associations.join(",\n");
+}
+return featuresassociation;
 }
 
 /*
@@ -22,11 +40,10 @@ return begin+features+associations+alternative+linkToLink+links;
 */
 function declareFeature(listFeature){
 
-var textFeatures = "";
+var textFeatures = [];
 
 for (i = 0; i < listFeature.length; i++) { 
-    textFeatures += "\n{\"key\":\""+ listFeature[i].getName() + "\", \"category\":\""+listFeature[i].getType()+"\"}";
-    textFeatures += ",";
+    textFeatures.push("{\"key\":\""+ listFeature[i].getName() + "\", \"category\":\""+listFeature[i].getType()+"\"}");
     
 }
 
@@ -38,18 +55,16 @@ return textFeatures;
 */
 function declareAssociation(listAssociation){
 
-	var textAssociation = "";
+	var textAssociation = [];
 
 	for (i = 0; i < listAssociation.length; i++) { 
+
 	if (listAssociation[i].getParent()!=undefined){
-		textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
-    if (i!=(listAssociation.length-1)) {
-    	textAssociation += ",";
-    }
+		textAssociation.push("{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}");
+    
 	}
     
 }
-
 return textAssociation;
 }
 
@@ -74,6 +89,7 @@ function declareLink(listAssociation,listFeatures){
 		}
 
 	}
+}
 
 	if(category == "alternative"){
 		arrayAlter.push("\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
@@ -98,7 +114,7 @@ function declareLink(listAssociation,listFeatures){
 
     
 }
-}
+
 var text = arrayManOp.concat(arrayAlter);
 
 textAssociation += "\n]}\n";

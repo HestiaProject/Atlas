@@ -41,10 +41,13 @@ function declareAssociation(listAssociation){
 	var textAssociation = "";
 
 	for (i = 0; i < listAssociation.length; i++) { 
-    textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
+	if (listAssociation[i].getParent()!=undefined){
+		textAssociation += "\n{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}";
     if (i!=(listAssociation.length-1)) {
     	textAssociation += ",";
     }
+	}
+    
 }
 
 return textAssociation;
@@ -64,6 +67,7 @@ function declareLink(listAssociation,listFeatures){
 	for (i = 0; i < listAssociation.length; i++) {  
 
 	for (j = 0; j < listFeatures.length; j++) { // "for" to find the relation of the child feature
+	if (listAssociation[i].getChild()!=undefined){
 
 		if (listAssociation[i].getChildName()==listFeatures[j].getName()){
 			category = listFeatures[j].getType(); //if there a feature with the same name as the child from a association, the "category" will be set to this relation
@@ -94,7 +98,7 @@ function declareLink(listAssociation,listFeatures){
 
     
 }
-
+}
 var text = arrayManOp.concat(arrayAlter);
 
 textAssociation += "\n]}\n";
@@ -102,6 +106,7 @@ textAssociation += "\n]}\n";
 return text.join(",")+textAssociation;
 
 }
+
 
 
 function declareAssociationAlternative(listFeatures,listAssociation){ //declare all links to links, named as alt

@@ -45,8 +45,8 @@
 		                        createFeatureModalButtonClick()
 		                    }
 		                }),
-						
-						$("ContextMenuButton",
+
+		            $("ContextMenuButton",
 		                $(go.TextBlock, "New Association"), {
 		                    click: function() {
 		                        createAssociationModalButtonClick()
@@ -101,26 +101,26 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Rename"), {
 		                                click: function(e, button) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
 		                                    var size = true;
 		                                    while (size) {
 		                                        var fName = prompt("Please enter a new name:", selnode.data.key);
-												if(m1.contain(fName.trim())!=-1){	
-												alert("Name already taken!");
-												}else{
-		                                        if (fName.length <= 30 && fName.trim() != "")
-		                                            size = false;
-												else
-													alert("You must enter a name with 30 characters or less!");
-												}
+		                                        if (m1.contain(fName.trim()) != -1) {
+		                                            alert("Name already taken!");
+		                                        } else {
+		                                            if (fName.length <= 30 && fName.trim() != "")
+		                                                size = false;
+		                                            else
+		                                                alert("You must enter a name with 30 characters or less!");
+		                                        }
 		                                    }
 		                                    if (fName == null) {
 
-		                                    }else {
-	
+		                                    } else {
+
 		                                        var f1 = m1.findFeature(selnode.data.key);
 		                                        f1.setName(fName);
 		                                        m1.updateFeature(f1);
@@ -133,21 +133,21 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Create Child"), {
 		                                click: function(e, obj) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
 		                                    var size = true;
 		                                    while (size) {
 		                                        var fName = prompt("Please enter a new name:", "New Feature");
-		                                        if(m1.contain(fName.trim())!=-1){	
-												alert("Name already taken!");
-												}else{
-												if (fName.length <= 30 && fName.trim() != "")
-		                                            size = false;
-												else
-													alert("You must enter a name with 30 characters or less!");
-												}
+		                                        if (m1.contain(fName.trim()) != -1) {
+		                                            alert("Name already taken!");
+		                                        } else {
+		                                            if (fName.length <= 30 && fName.trim() != "")
+		                                                size = false;
+		                                            else
+		                                                alert("You must enter a name with 30 characters or less!");
+		                                        }
 		                                    }
 		                                    if (fName == null) {
 
@@ -168,7 +168,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Remove Feature"), {
 		                                click: function(e, obj) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -183,7 +183,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Mandatory"), {
 		                                click: function(e, obj) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -198,7 +198,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Optional"), {
 		                                click: function(e, obj) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -213,7 +213,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Alternative"), {
 		                                click: function(e, obj) {
-											save2();
+		                                    save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -231,6 +231,38 @@
 		        );
 
 
+		    //double click actions
+		    myDiagram.addDiagramListener("ObjectDoubleClicked", function(e) {
+		        save2();
+		        var diagram = e.diagram;
+		        var selnode = diagram.selection.first();
+		        if (!(selnode instanceof go.Node)) return;
+		        var size = true;
+		        while (size) {
+		            var fName = prompt("Please enter a new name:", selnode.data.key);
+		            if (m1.contain(fName.trim()) != -1) {
+		                alert("Name already taken!");
+		            } else {
+		                if (fName.length <= 30 && fName.trim() != "")
+		                    size = false;
+		                else
+		                    alert("You must enter a name with 30 characters or less!");
+		            }
+		        }
+		        if (fName == null) {
+
+		        } else {
+
+		            var f1 = m1.findFeature(selnode.data.key);
+		            f1.setName(fName);
+		            m1.updateFeature(f1);
+		            document.getElementById('myModel').value = JSON.stringify(m1);
+		            document.getElementById("mySavedModel").value = parseModelToString(m1);
+		            load();
+		        }
+
+
+		    });
 
 		    // This is the template for a label node on a link: just an Ellipse, but with 0 size what makes it invisible.
 		    myDiagram.nodeTemplateMap.add("LinkLabel",
@@ -260,9 +292,9 @@
 		                relinkableFrom: false,
 		                relinkableTo: false,
 		                toShortLength: 9,
-						fromShortLength: 19,
-						fromEndSegmentLength: 1,
-						toEndSegmentLength: 1
+		                fromShortLength: 19,
+		                fromEndSegmentLength: 1,
+		                toEndSegmentLength: 1
 		            },
 		            $("Shape", {
 		                stroke: "#000",
@@ -291,10 +323,10 @@
 		        $("Link", {
 		                relinkableFrom: false,
 		                relinkableTo: false,
-						
-						fromShortLength: 19,
-						fromEndSegmentLength: 1,
-						toEndSegmentLength: 0
+
+		                fromShortLength: 19,
+		                fromEndSegmentLength: 1,
+		                toEndSegmentLength: 0
 		            },
 		            $("Shape", {
 		                stroke: "#000",
@@ -367,7 +399,7 @@
 		}
 
 		function load() {
-			
+
 		    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
 

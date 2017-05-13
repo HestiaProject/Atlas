@@ -101,6 +101,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Rename"), {
 		                                click: function(e, button) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -119,7 +120,7 @@
 		                                    if (fName == null) {
 
 		                                    }else {
-
+	
 		                                        var f1 = m1.findFeature(selnode.data.key);
 		                                        f1.setName(fName);
 		                                        m1.updateFeature(f1);
@@ -132,6 +133,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Create Child"), {
 		                                click: function(e, obj) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -166,6 +168,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Remove Feature"), {
 		                                click: function(e, obj) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -180,6 +183,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Mandatory"), {
 		                                click: function(e, obj) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -194,6 +198,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Optional"), {
 		                                click: function(e, obj) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;
@@ -208,6 +213,7 @@
 		                        $("ContextMenuButton",
 		                            $(go.TextBlock, "Make Alternative"), {
 		                                click: function(e, obj) {
+											save2();
 		                                    var diagram = e.diagram;
 		                                    var selnode = diagram.selection.first();
 		                                    if (!(selnode instanceof go.Node)) return;

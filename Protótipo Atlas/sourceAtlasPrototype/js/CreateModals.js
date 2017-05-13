@@ -1,5 +1,6 @@
 // Create Feature Modal
 function createFeatureModalButtonClick() {
+	save2();
     var createFeatureModal = document.getElementById("featureModal");
     var comboBox = document.getElementById("featureTypeComboBox");
 
@@ -25,6 +26,7 @@ function createFeatureModalButtonClick() {
 // Create Association Modal
 
 function createAssociationModalButtonClick() {
+	save2();
     var createAssociationModal = document.getElementById("associationModal");
     var feature1ComboBox = document.getElementById("feature1ComboBox");
     var feature2ComboBox = document.getElementById("feature2ComboBox");

@@ -291,10 +291,10 @@
 		        $("Link", {
 		                relinkableFrom: false,
 		                relinkableTo: false,
-						toShortLength: 9,
+						
 						fromShortLength: 19,
 						fromEndSegmentLength: 1,
-						toEndSegmentLength: 1
+						toEndSegmentLength: 0
 		            },
 		            $("Shape", {
 		                stroke: "#000",

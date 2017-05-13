@@ -259,7 +259,10 @@
 		            {
 		                relinkableFrom: false,
 		                relinkableTo: false,
-		                toShortLength: 1
+		                toShortLength: 9,
+						fromShortLength: 19,
+						fromEndSegmentLength: 1,
+						toEndSegmentLength: 1
 		            },
 		            $("Shape", {
 		                stroke: "#000",
@@ -287,7 +290,11 @@
 		    myDiagram.linkTemplateMap.add("optional",
 		        $("Link", {
 		                relinkableFrom: false,
-		                relinkableTo: false
+		                relinkableTo: false,
+						toShortLength: 9,
+						fromShortLength: 19,
+						fromEndSegmentLength: 1,
+						toEndSegmentLength: 1
 		            },
 		            $("Shape", {
 		                stroke: "#000",

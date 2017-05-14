@@ -198,11 +198,12 @@ for (i = 0; i < listFeatures.length; i++) {
   for (j = 0; j < listAssociation.length; j++) { 
 
 for (k = 0; k < listFA.length; k++) { 
-    
+    	if (listAssociation[j].getChild()!=undefined){
+
     if (listAssociation[j].getChildName()==listFA[k].getName()){
 	listLA.push(listAssociation[j]);
 	}
-
+}
   }
 
 }

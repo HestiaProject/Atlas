@@ -108,7 +108,7 @@
 		                                    var size = true;
 		                                    while (size) {
 		                                        var fName = prompt("Please enter a new name:", selnode.data.key);
-		                                        if (m1.contain(fName.trim()) != -1) {
+		                                        if (m1.contain(fName.trim()) != -1 && fName.toUpperCase() != selnode.data.key.toUpperCase()) {
 		                                            alert("Name already taken!");
 		                                        } else {
 		                                            if (fName.length <= 30 && fName.trim() != "")
@@ -240,7 +240,7 @@
 		        var size = true;
 		        while (size) {
 		            var fName = prompt("Please enter a new name:", selnode.data.key);
-		            if (m1.contain(fName.trim()) != -1) {
+		            if (m1.contain(fName.trim()) != -1 && fName.toUpperCase() != selnode.data.key.toUpperCase()) {
 		                alert("Name already taken!");
 		            } else {
 		                if (fName.length <= 30 && fName.trim() != "")

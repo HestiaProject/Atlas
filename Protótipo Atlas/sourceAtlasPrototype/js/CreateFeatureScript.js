@@ -3,16 +3,16 @@ document.getElementById("createFeatureSubmitButton").onclick = function() {
     var name = document.getElementById("nameFeatureTextField").value;
     var type = document.getElementById("featureTypeComboBox").value.toLowerCase();
 
-	
-	if (name == null || name.trim() == "") {
-		 alert("You must enter a name!");
-	}else
+
+    if (name == null || name.trim() == "") {
+        alert("You must enter a name!");
+    } else
     if (m1.contain(name.trim()) != -1) {
         alert("Name already taken!");
-    } else 
-        if (name.length >= 30){
-           alert("Name must be 30 characters or less!");
-    }else{
+    } else
+    if (name.length >= 30) {
+        alert("Name must be 30 characters or less!");
+    } else {
 
 
         var feature = new Feature(name, type);
@@ -25,10 +25,8 @@ document.getElementById("createFeatureSubmitButton").onclick = function() {
         var modelString = parseModelToString(m1);
         document.getElementById('mySavedModel').value = modelString;
 
-        var createFeatureModal = document.getElementById("featureModal");
-        createFeatureModal.style.display = "none";
+        closeFeatureModalButtonClick();
 
         load();
     }
 }
-

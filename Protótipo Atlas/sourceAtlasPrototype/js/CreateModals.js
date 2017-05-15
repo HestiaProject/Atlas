@@ -1,6 +1,9 @@
 // Create Feature Modal
+
+var canvas = document.getElementById("myDiagramDiv");
+
 function createFeatureModalButtonClick() {
-	save2();
+    save2();
     var createFeatureModal = document.getElementById("featureModal");
     var comboBox = document.getElementById("featureTypeComboBox");
 
@@ -18,15 +21,15 @@ function createFeatureModalButtonClick() {
     }
 
     createFeatureModal.style.display = "block";
-    createFeatureModal.focus();
-    // document.getElementById("nameFeatureTextField").focus();
+    canvas.style.marginLeft = "135px";
+    document.getElementById("nameFeatureTextField").focus();
 
 }
 
 // Create Association Modal
 
 function createAssociationModalButtonClick() {
-	save2();
+    save2();
     var createAssociationModal = document.getElementById("associationModal");
     var feature1ComboBox = document.getElementById("feature1ComboBox");
     var feature2ComboBox = document.getElementById("feature2ComboBox");
@@ -44,7 +47,7 @@ function createAssociationModalButtonClick() {
         feature2ComboBox.remove(i);
     }
 
-    m1.getFeatures().forEach(function (feature) {
+    m1.getFeatures().forEach(function(feature) {
         feature1Name = feature.getName();
         option = document.createElement("option");
         option.text = feature1Name;
@@ -56,31 +59,28 @@ function createAssociationModalButtonClick() {
 
     //iterate over list and create a second ComboBox
     if (listCanAssociate.length > 0) {
-        listCanAssociate.forEach(function (feature2Name) {
+        listCanAssociate.forEach(function(feature2Name) {
             option = document.createElement("option");
             option.text = feature2Name;
             feature2ComboBox.add(option);
         });
     }
 
-    if(feature2ComboBox.options.length > 0){
+    if (feature2ComboBox.options.length > 0) {
         document.getElementById("createAssociationSubmitButton").disabled = false;
         feature2ComboBox.disabled = false;
-    }else{
+    } else {
         document.getElementById("createAssociationSubmitButton").disabled = true;
         feature2ComboBox.disabled = true;
     }
 
+    canvas.style.marginLeft = "135px";
     createAssociationModal.style.display = "block";
-    createAssociationModal.focus();
-    
 }
 
 
 // Create Load Modal
 function createLoadModalButtonClick() {
     var createLoadModal = document.getElementById("loadFileModal");
-    createLoadModal.style.display = "block";
-    createLoadModal.focus();
+    createLoadModal.style.display = "block";    
 }
-

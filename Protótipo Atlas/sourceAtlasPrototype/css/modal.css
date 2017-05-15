@@ -1,156 +1,81 @@
-/*Create Feature*/
-
-.featureModal {
-    display: none;
+.modal {
     position: fixed;
-    left: 5%;
-    z-index: 5;
-    color: #fff;
-    background-color: #429dff;
-    border-style: solid;
-    border-radius: 10px;
-}
-
-.featureModal label {
-    display: block;
-    width: 70%;
-    box-sizing: border-box;
-    margin: 3% 15%;
-}
-
-#nameFeatureTextField, #featureTypeComboBox {
-    border-radius: 4px;
-    line-height: 1.5em;
-    padding: 0.5em 3.5em 0.5em 1em;
-    display: block;
-    width: 70%;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    margin: 2% 15%;
-}
-
-
-/*Load file*/
-
-.loadFileModal {
     display: none;
-    position: fixed;
-    left: 75%;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
     z-index: 5;
-    color: #fff;
-    background-color: #429dff;
-    border-style: solid;
-    border-radius: 10px;
-}
-
-.loadFileModal label {
-    display: block;
-    width: 70%;
-    box-sizing: border-box;
-    margin: 3% 15%;
-}
-
-#fileInput {
-    display: block;
-    width: 70%;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    margin: 2% 15%;
-}
-
-
-/*Association Modal*/
-
-.associationModal {
-    display: none;
-    position: fixed;
-    left: 5%;
-    top: 30%;
-    z-index: 5;
-    color: #fff;
-    background-color: #429dff;
-    border-style: solid;
-    border-radius: 10px;
-}
-
-.associationModal label {
-    display: block;
-    width: 70%;
-    box-sizing: border-box;
-    margin: 3% 15%;
-}
-
-#feature1ComboBox, #feature2ComboBox {
-    display: block;
-    width: 70%;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    margin: 2% 15%;
-}
-
-
-/* Close Button */
-
-.closeButton .fa-times {
-    color: #fff;
-    float: right;
-    padding-right: 5px;
-}
-
-.closeButton .fa-times:hover, .closeButton .fa-times:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/*change ComboBox*/
-
-select {
-    min-width: 200px;
-    background-color: white;
-    border-radius: 4px;
-    display: inline-block;
-    font: inherit;
-    line-height: 1.5em;
-    padding: 0.5em 3.5em 0.5em 1em;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 }
 
 select {
-    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#ddd 70%, transparent 72%);
-    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - .5em) .5em;
-    background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
-    background-repeat: no-repeat;
+    width: 170px;
+    margin: 10px;
+    padding: 3px;
 }
 
-/*change all buttons on modals*/
-button#createAssociationSubmitButton, button#loadFileSubmitButton, button#createFeatureSubmitButton{
-    background-color: #225889;
-    padding: 0.5em 1.5em 0.5em 1em;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    width: 40%;
-    margin: 20px 30%;
-    font: inherit;
-    border-style: inherit;
-    border-color: #fff;
-    font-weight: bold;
+.modal input {
+    margin: 10px;
+    padding: 3px;
+    width: 160px;
 }
 
-button#showJSON, button#SaveButton, button#loadButton{
-    background-color: #225889;
-    padding: 0.5em 1.5em 0.5em 1em;
-    border-radius: 10px;
+.closeButton {
+    text-align: right;
+    padding-bottom: 30px;
+    font-size: 22px;
+    left: 22px;
+}
+
+
+/*Feature*/
+
+.featureModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #222222;
+    width: 198px;
+    height: 100%;
+    font-family: Verdana;
     color: #fff;
-    cursor: pointer;    
-    font: inherit;    
-    border-color: #F1F1F1;
-    font-weight: bold;
+}
+
+
+/*Association*/
+
+.associationModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #222222;
+    width: 198px;
+    height: 100%;
+    font-family: Verdana;
+    color: #fff;
+}
+
+
+/*File*/
+
+.loadFileModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #104581;
+    width: 100%;
+    height: 130px;
+    font-family: Verdana;
+    color: #fff;
+}
+
+.loadFileModalContent input{
+    width: auto;
+    border-style: solid;
+}
+
+.loadFileModalContent .closeButton {
+    
+    top: 0;
+    text-align: right;
+    padding-bottom: 0px;
 }

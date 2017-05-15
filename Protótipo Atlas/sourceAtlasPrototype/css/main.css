@@ -1,179 +1,123 @@
-/*File Title*/
+/*generic*/
 
 body {
+    margin: 0;
     background-color: #F1F1F1;
 }
 
-.modelName {
-    font-size: 30px;
-    top: 2%;
-    left: 45%;
-    position: fixed;
-    background-color: #225889;
-    border-style: none;
+.tooltip {
+    display: none;
+}
+
+a {
     color: #fff;
-    z-index: 4;
+    padding: 15px;
+    text-decoration: none;
 }
 
 
-/*Top bar and icons*/
+/*top Bar*/
 
 .topBar {
-    /*height: 10%;*/
-    height: calc;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #225889;
-    border-bottom: 2px solid #e8e8e8;
-    padding-left: 85%;
-    z-index: 3;
-}
-
-.topBar a {
-    vertical-align: center;
     display: inline-block;
-    font-size: 5vh;
-    font-size: 2vw;
-    color: #fff;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 2.5vh;
-    padding-bottom: 2.5vh;
-    justify-content: right;
+    position: fixed;
+    overflow: hidden;
+    background-color: #104581;
+    width: 100%;
+    height: 66px;
+    z-index: 2;
+    margin: 0;
 }
 
-.topBar a:hover {
-    background-color: #000;
+.topBarIconGroup {
+    float: right;
+}
+
+.topBarIconGroup a {
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.topBarIconGroup a:hover {
+    background-color: #222222;
+}
+
+.modelName {
+    height: 40px;
+    margin-top: 12px;
+    margin-left: 42%;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    background: none;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    outline: 0;
 }
 
 
-/*Side bar and icons*/
+/*side Bar*/
 
 .sideBar {
-    height: 100%;
-    width: calc(5em+1vh);
+    margin: 0;
     position: fixed;
-    top: 10%;
-    left: 0px;
-    z-index: 1;
-    background-color: #000;
+    background-color: #222222;
+    width: 66px;
+    height: 100%;
+    overflow: hidden;
 }
 
-.sideBar a {
+.sideBarIconGroup {
+    margin-top: 66px;
+}
+
+.sideBarIconGroup a {
+    font-size: 200%;
     display: block;
     text-align: center;
-    padding: 2vh;
-    color: #fff;   
-    z-index: 1;
 }
 
-.fa-times{
-    color: #ff3527;   
-}
-
-#removeFeatureTimes .fa-times{   
-    
-    bottom:16.5px;
-
-}
-
-.sideBar a:hover {
-    background-color: #225889;
+.sideBarIconGroup a:hover {
+    background-color: #104581;
 }
 
 
-/*Canvas*/
+/*Model Text*/
 
-.canvas {  
-    background-color: #fff;   
+
+#mySavedModel {
+    width: 100%;
+    height: 400px;
+}
+
+
+#myModel {
+    width: 100%;
+    height: 400px;
+}
+
+
+#JsonText {
+    display: none;
+}
+
+
+/*Model graphic*/
+
+.canvas {    
+    position: absolute;
+    margin-left: 70px;
+    margin-top: 70px;
+    background: #fff;
     z-index: -3;
 }
 
-.jsonText {
-    z-index: -1;
+#myDiagramDiv {   
+    border: solid 1px #000;
+    width: 1600px;
+    height: 600px;
+    background: #fff;    
 }
-
-/*Side Bar tooltips*/
-
-.sideBar .tooltip {
-    visibility: hidden;
-    display: block;
-    background-color: #225889;
-    color: #fff;
-    width: 30vh;
-    border-radius: 6px;
-    font-size: 3vh;
-    /*Position of box*/
-    position: absolute;
-    z-index: 1;
-    left: 110%;
-    margin-top: 10%;
-}
-
-
-/*tooltip arrow*/
-
-.sideBar .tooltip::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent #225889 transparent transparent;
-}
-
-.sideBar a:hover .tooltip {
-    visibility: visible;
-}
-
-
-/*Top Bar tooltips*/
-
-.topBar .tooltip {
-    visibility: hidden;
-    width: 20vh;
-    border-radius: 6px;
-    font-size: 3vh;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    top: 110%;
-    margin-left: -3.5vw;
-}
-
-
-/*arrow*/
-
-.topBar .tooltip::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #000 transparent;
-}
-
-.topBar a:hover .tooltip {
-    visibility: visible;
-}
-
-
-/*text area*/
-
-#mySavedModel {
-    z-index: 0;
-}
-
-#myDiagramDiv {
-    z-index: 0;
-}
-

@@ -17,7 +17,7 @@ function canAssociate(featureName) {
     listAllFeatures = m1.getFeatures();
 
     // Create a list of child and parent list
-    listAllAssociations.forEach(function (association) {
+    listAllAssociations.forEach(function(association) {
         parent = association.getParent();
         child = association.getChild();
 
@@ -48,7 +48,7 @@ function canAssociate(featureName) {
 
 }
 
-document.getElementById("createAssociationSubmitButton").onclick = function () {
+document.getElementById("createAssociationSubmitButton").onclick = function() {
 
     var feature1Name = document.getElementById("feature1ComboBox").value;
     var feature2Name = document.getElementById("feature2ComboBox").value;
@@ -62,7 +62,7 @@ document.getElementById("createAssociationSubmitButton").onclick = function () {
         save();
     }
 
-    document.getElementById("associationModal").style.display = "none";
+    closeAssociationModalButtonClick();
     load();
 
 }

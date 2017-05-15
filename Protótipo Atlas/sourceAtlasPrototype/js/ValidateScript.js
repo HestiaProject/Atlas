@@ -53,12 +53,13 @@ var node;
 
 for (i=0;i<listFeatures.length;i++){
 	
-        node = {name: listFeatures[i].getName(),type:listFeatures[i].getType(), parents: "", children: [], visited:false}
+        node = {name: listFeatures[i].getName(),type:listFeatures[i].getType(), parents: "", children: [], visited:false};
 
 
  for (j=0;j<listAssociation.length;j++){
-
+if(listAssociation[j].getParent()!=undefined && listAssociation[j].getChild()!=undefined){
  if(listFeatures[i].getName()==listAssociation[j].getParentName()){
+
 	
 node.children.push(listAssociation[j].getChildName());
  }
@@ -69,7 +70,7 @@ node.parents=listAssociation[j].getParentName();
  }
 
 }
-
+}
 if ((node.parents=="") && (node.children.length==0)){
 }else{
 		tree.push(node);

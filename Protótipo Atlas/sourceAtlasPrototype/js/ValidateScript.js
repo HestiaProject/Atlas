@@ -9,8 +9,13 @@ var oneRoot = checkRoot(tree);
 //var numberAssociation = checkAssociations(tree,listAssociation);
 var numberAlternatives = checkAlternatives(tree);
 
-if(oneRoot.length!=1){ //message to when the number of root are wrong
+if(oneRoot.length>1){ //message to when the number of root are wrong
 	message.push("The model do not allow more than 1 root: \""+oneRoot.join("\", \"")+"\"");
+
+}
+
+if(oneRoot.length==0){ //message to when the number of root are wrong
+	message.push("The model needs at least 1 feature root");
 
 }
 
@@ -30,7 +35,7 @@ if(numberAlternatives.length!=0){ //message to when the number of alternatives a
 
 //creatreTree(tree);
 if (message.length==0){
-	return "Feature Model Validated!";
+	return "Tree Correctly Constructed!";
 }else{
 	return message.join(",\n")+".";
 }

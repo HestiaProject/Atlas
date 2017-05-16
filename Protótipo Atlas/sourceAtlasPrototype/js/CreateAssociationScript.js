@@ -20,10 +20,12 @@ function canAssociate(featureName) {
     listAllAssociations.forEach(function(association) {
         parent = association.getParent();
         child = association.getChild();
-
+		
+		if (child != undefined){
         if (child.getName() == featureName) {
             featureIsChild = true;
         }
+		}
 
         isParent.push(parent);
         isChild.push(child);

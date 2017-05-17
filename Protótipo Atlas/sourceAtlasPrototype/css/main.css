@@ -85,7 +85,7 @@ a {
     background-color: #222222;
     width: 66px;
     height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     z-index: 2;
 }
 
@@ -133,8 +133,6 @@ a {
 
 #myDiagramDiv {
     border: solid 1px #000;
-    width: 1600px;
-    height: 600px;
     background: #fff;
 }
 
@@ -142,98 +140,67 @@ a {
 /*==================================Tool tips==================================*/
 
 .tooltip {
+    visibility: hidden;
     font-family: Verdana;
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+    position: absolute;
+    padding: 5px 0;
+    width: 200px;
+    z-index: 5;
+    color: #fff;
+}
+
+a:hover .tooltip {
+    visibility: visible;
+    opacity: 0.9;
 }
 
 
 /*==================================Tool tips TopBar==================================*/
 
 .topBar a .tooltip {
-    visibility: hidden;
-    width: 150px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
+    background-color: #222222;
     top: 70px;
-    left: 900px;
-    opacity: 0;
-    transition: opacity 1s;
 }
 
 .topBar a .tooltip::after {
     content: " ";
     position: absolute;
     bottom: 100%;
-    left: 50%;
+    left: 90%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent black transparent;
-}
-
-.topBar a:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
+    border-color: transparent transparent #222222 transparent;
 }
 
 
 /*==================================Tool tips TopBarSmall==================================*/
 
 .topBarIconGroupSmall a .tooltip {
-    visibility: hidden;
-    width: 120px;
-    background-color: #222222;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
-    bottom: 125%;
-    left: 50%;
-    opacity: 0;
-    transition: opacity 1s;
+    background-color: #104581;
+    right: 70px;
 }
 
 .topBarIconGroupSmall a .tooltip::after {
     content: " ";
     position: absolute;
     top: 50%;
-    right: 100%;
-    /* To the left of the tooltip */
+    left: 100%;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-
-.topBarIconGroupSmall a:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
+    border-color: transparent transparent transparent #104581;
 }
 
 
 /*==================================Tool tips SideBar==================================*/
 
 .sideBar a .tooltip {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
-    bottom: 125%;
-    left: 50%;
-    opacity: 0;
-    transition: opacity 1s;
+    background-color: #104581;
+    left: 70px;
 }
 
 .sideBar a .tooltip::after {
@@ -241,14 +208,8 @@ a {
     position: absolute;
     top: 50%;
     right: 100%;
-    /* To the left of the tooltip */
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-
-.sideBar a:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
+    border-color: transparent #104581 transparent transparent;
 }

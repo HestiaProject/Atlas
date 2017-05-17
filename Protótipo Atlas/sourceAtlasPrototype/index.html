@@ -117,12 +117,19 @@
     <script type="text/javascript">
         var m1;
 
-        // DELETE IMAGE
-        document.getElementsByTagName("div")[19].remove();
+
 
 
         function firstLoad() {
+            // DELETE IMAGE
+            var hostimg = document.getElementsByTagName("img");
+            if (hostimg[0] != undefined) {
+                hostimg[0].remove();
+            }
+
+            // initial ajdust of positions;
             adjustSizes();
+            adjustTooltips();
             m1 = new Model();
             init(m1);
 
@@ -134,10 +141,11 @@
 
         function toggle_visibility(id) {
             var e = document.getElementById(id);
-            if (e.style.display == 'block')
-                e.style.display = 'none';
-            else
-                e.style.display = 'block';
+            if (e.style.display == 'block') {
+                e.style.display = 'none';               
+            } else {
+                e.style.display = 'block';               
+            }
         }
 
         function validate() {

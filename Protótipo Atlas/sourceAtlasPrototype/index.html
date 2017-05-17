@@ -17,7 +17,7 @@
     <!--Top Bar-->
     <div class="topBar">
         <input id="modelName" class="modelName" type="text" placeholder="Model name">
-        <div class="topBarIconGroup">
+        <div class="topBarIconGroup" id="topBarIconGroup">
             <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
                 <span class="tooltip">Load Model</span>
                 <i class="fa fa-upload"></i> </a>
@@ -28,6 +28,20 @@
                 <span class="tooltip">Save as .png</span>
                 <i class="fa fa-file-image-o"></i> </a>
         </div>
+    </div>
+
+
+    <!--Top Bar Small Screen < 600 width-->
+    <div class="topBarIconGroupSmall" id="topBarIconGroupSmall">
+        <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
+            <span class="tooltip">Load Model</span>
+            <i class="fa fa-upload"></i> </a>
+        <a onclick="saveAsJson()" href="javascript:void(0);">
+            <span class="tooltip">Save as .json</span>
+            <i class="fa fa-save"></i> </a>
+        <a onclick="exportPng()" href="javascript:void(0)">
+            <span class="tooltip">Save as .png</span>
+            <i class="fa fa-file-image-o"></i> </a>
     </div>
 
     <!--Side Bar-->
@@ -100,13 +114,15 @@
     </div>
 
     <!--Initial load-->
-    <script type="text/javascript">        
+    <script type="text/javascript">
         var m1;
 
-        
+        // DELETE IMAGE
+        document.getElementsByTagName("div")[19].remove();
+
 
         function firstLoad() {
-            adjustCanvas();
+            adjustSizes();
             m1 = new Model();
             init(m1);
 

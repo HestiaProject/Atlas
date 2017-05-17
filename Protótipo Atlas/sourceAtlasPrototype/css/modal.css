@@ -1,3 +1,5 @@
+/*==================================generic==================================*/
+
 .modal {
     position: fixed;
     display: none;
@@ -27,7 +29,7 @@ select {
 }
 
 
-/*Feature*/
+/*==================================Feature==================================*/
 
 .featureModalContent {
     display: block;
@@ -41,7 +43,7 @@ select {
 }
 
 
-/*Association*/
+/*==================================Association==================================*/
 
 .associationModalContent {
     display: block;
@@ -55,7 +57,7 @@ select {
 }
 
 
-/*File*/
+/*==================================File==================================*/
 
 .loadFileModalContent {
     display: block;

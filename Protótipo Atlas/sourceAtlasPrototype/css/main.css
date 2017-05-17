@@ -1,12 +1,8 @@
-/*generic*/
+/*==================================generic==================================*/
 
 body {
     margin: 0;
     background-color: #F1F1F1;
-}
-
-.tooltip {
-    display: none;
 }
 
 a {
@@ -16,16 +12,16 @@ a {
 }
 
 
-/*top Bar*/
+/*==================================top Bar==================================*/
 
 .topBar {
     display: inline-block;
     position: fixed;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: #104581;
     width: 100%;
     height: 66px;
-    z-index: 2;
+    z-index: 3;
     margin: 0;
 }
 
@@ -47,7 +43,7 @@ a {
 .modelName {
     height: 40px;
     margin-top: 12px;
-    margin-left: 42%;
+    margin-left: 0px;
     text-align: center;
     vertical-align: middle;
     border: none;
@@ -59,7 +55,29 @@ a {
 }
 
 
-/*side Bar*/
+/*==================================topBarSmall=====================================*/
+
+.topBarIconGroupSmall {
+    /*position: fixed;*/
+    margin-top: 66px;
+    display: none;
+    float: right;
+    background-color: #222222;
+    z-index: 3;
+}
+
+.topBarIconGroupSmall a {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}
+
+.topBarIconGroupSmall a:hover {
+    background-color: #104581;
+}
+
+
+/*==================================side Bar==================================*/
 
 .sideBar {
     margin: 0;
@@ -68,6 +86,7 @@ a {
     width: 66px;
     height: 100%;
     overflow: hidden;
+    z-index: 2;
 }
 
 .sideBarIconGroup {
@@ -85,39 +104,151 @@ a {
 }
 
 
-/*Model Text*/
-
+/*==================================Model Text==================================*/
 
 #mySavedModel {
     width: 100%;
     height: 400px;
 }
 
-
 #myModel {
     width: 100%;
     height: 400px;
 }
-
 
 #JsonText {
     display: none;
 }
 
 
-/*Model graphic*/
+/*==================================Model graphic==================================*/
 
-.canvas {    
+.canvas {
     position: absolute;
     margin-left: 70px;
     margin-top: 70px;
     background: #fff;
-    z-index: -3;
+    z-index: -1;
 }
 
-#myDiagramDiv {   
+#myDiagramDiv {
     border: solid 1px #000;
     width: 1600px;
     height: 600px;
-    background: #fff;    
+    background: #fff;
+}
+
+
+/*==================================Tool tips==================================*/
+
+.tooltip {
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/*==================================Tool tips TopBar==================================*/
+
+.topBar a .tooltip {
+    visibility: hidden;
+    width: 150px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+    top: 70px;
+    left: 900px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.topBar a .tooltip::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.topBar a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*==================================Tool tips TopBarSmall==================================*/
+
+.topBarIconGroupSmall a .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: #222222;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+    bottom: 125%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.topBarIconGroupSmall a .tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.topBarIconGroupSmall a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*==================================Tool tips SideBar==================================*/
+
+.sideBar a .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+    bottom: 125%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.sideBar a .tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.sideBar a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }

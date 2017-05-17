@@ -293,13 +293,35 @@
 		                relinkableTo: false,
 		                toShortLength: 9,
 		                fromShortLength: 19,
-		                fromEndSegmentLength: 1,
-		                toEndSegmentLength: 1
+		                fromEndSegmentLength: 0,
+		                toEndSegmentLength: 0
 		            },
 		            $("Shape", {
 		                stroke: "#000",
 		                strokeWidth: 2
-		            })
+		            }),
+		        {contextMenu: // define a context menu for each node
+		                    $(go.Adornment, "Vertical",
+		                        $("ContextMenuButton",
+		                            $(go.TextBlock, "Remove Association"), {
+		                                click: function(e, button) {
+											save2();
+											var diagram = e.diagram;
+											var selnode = diagram.selection.first();
+											if (!(selnode instanceof go.Link)) return;
+											
+											var f1 = selnode.fromNode.data.key;
+											var f2 = selnode.toNode.data.key;
+											var a1 = m1.findAssociation(f1,f2);
+											m1.removeAssociation(a1);
+											document.getElementById('myModel').value = JSON.stringify(m1);
+		                                    document.getElementById("mySavedModel").value = parseModelToString(m1);
+											load();
+										}
+		                            })
+
+		                    ) // end Adornment
+		            }
 		        );
 
 		    // template to link links
@@ -337,7 +359,29 @@
 		                stroke: "#000",
 		                toArrow: "Circle"
 		            })
-		        ));
+		        ,
+		        {contextMenu: // define a context menu for each node
+		                    $(go.Adornment, "Vertical",
+		                        $("ContextMenuButton",
+		                            $(go.TextBlock, "Remove Association"), {
+		                                click: function(e, button) {
+											save2();
+											var diagram = e.diagram;
+											var selnode = diagram.selection.first();
+											if (!(selnode instanceof go.Link)) return;
+											
+											var f1 = selnode.fromNode.data.key;
+											var f2 = selnode.toNode.data.key;
+											var a1 = m1.findAssociation(f1,f2);
+											m1.removeAssociation(a1);
+											document.getElementById('myModel').value = JSON.stringify(m1);
+		                                    document.getElementById("mySavedModel").value = parseModelToString(m1);
+											load();
+										}
+		                            })
+
+		                    ) // end Adornment
+		            }));
 
 
 

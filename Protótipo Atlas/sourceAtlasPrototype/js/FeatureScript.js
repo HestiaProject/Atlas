@@ -8,7 +8,6 @@ function Feature(name, type) {
 	
     this.name = name;
     this.type = type;
-    this.listAssociation = [];
 };
 
 Feature.prototype.setName = function(name){
@@ -27,10 +26,3 @@ Feature.prototype.getType = function () {
     return this.type;
 };
 
-Feature.prototype.addAssociation = function(association){
-    this.listAssociation.push(association);
-}
-
-Feature.prototype.getAssociations = function(){
-    return this.listAssociation;
-}

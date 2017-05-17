@@ -36,6 +36,14 @@ Model.prototype.removeAssociation = function(feature){
     }
 }
 
+Model.prototype.removeAssociation = function(association){
+	
+    var associationIndex = this.listAssociations.indexOf(association);
+    
+    this.listAssociations.splice(associationIndex,1);
+    }
+
+
 
 Model.prototype.addAssociation = function(association){
      if (association != undefined){
@@ -64,6 +72,23 @@ Model.prototype.findFeature = function(string){
 		var f1 = this.listFeatures[i];
 		if(f1.getName().toUpperCase() == string.toUpperCase()){
 			return f1;
+		}
+		
+	}
+	return false;
+
+}
+
+Model.prototype.findAssociation = function(f1,f2){
+
+	var f1 = this.findFeature(f1);
+	var f2 = this.findFeature(f2);
+	for(var i = 0;i < this.listAssociations.length;i++){
+		var a1 = this.listAssociations[i];
+		var parent = a1.getParentName();
+		var child = a1.getChildName();
+		if(f1.getName().toUpperCase() == parent.toUpperCase()&& f2.getName().toUpperCase() == child.toUpperCase()){
+			return a1;
 		}
 		
 	}

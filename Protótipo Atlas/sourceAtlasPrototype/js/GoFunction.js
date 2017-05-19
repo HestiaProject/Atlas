@@ -415,7 +415,7 @@
 		    var img = myDiagram.makeImageData({
 		        background: "white",
 		        returnType: "string",
-		        size: new go.Size(1800, 1400)
+		        size: new go.Size(1800, NaN)
 		    });
 
 		    img = img.replace('data:image/png;base64,', '');

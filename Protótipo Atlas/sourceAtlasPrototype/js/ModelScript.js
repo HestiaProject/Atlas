@@ -4,6 +4,9 @@ function Model(name){
     this.listAssociations = [];
 }
 
+Model.prototype.getName= function(){
+	return this.name;
+}
 Model.prototype.addFeature= function(feature){
     if (feature != undefined){
         this.listFeatures.push(feature);

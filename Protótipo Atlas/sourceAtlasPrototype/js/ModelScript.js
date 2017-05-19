@@ -39,7 +39,7 @@ Model.prototype.removeAssociation = function(feature){
     }
 }
 
-Model.prototype.removeAssociation = function(association){
+Model.prototype.removeAssociationByAssociation = function(association){
 	
     var associationIndex = this.listAssociations.indexOf(association);
     

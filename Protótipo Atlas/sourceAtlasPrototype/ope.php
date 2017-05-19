@@ -21,6 +21,8 @@ $_SESSION['senha'] = $senha;
 header('location:site.php');
 }
 else{
+    echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='index.php';</script>";
+          die();
 	unset ($_SESSION['login']);
 	unset ($_SESSION['senha']);
         header('location:index.php');

@@ -59,7 +59,7 @@ function declareAssociation(listAssociation){
 
 	for (i = 0; i < listAssociation.length; i++) { 
 
-	if (listAssociation[i].getParent()!=undefined){
+	if (listAssociation[i].getParent()!=undefined && listAssociation[i].getChild()!=undefined){
 		textAssociation.push("{\"key\":\""+ listAssociation[i].getParentName()+"-"+listAssociation[i].getChildName() + "\", \"category\":\"LinkLabel\"}");
     
 	}
@@ -80,16 +80,16 @@ function declareLink(listAssociation,listFeatures){
 	var arrayAlter = [];
 
 	for (i = 0; i < listAssociation.length; i++) {  
+	if (listAssociation[i].getChild()!=undefined){
 
 	for (j = 0; j < listFeatures.length; j++) { // "for" to find the relation of the child feature
-	if (listAssociation[i].getChild()!=undefined){
 
 		if (listAssociation[i].getChildName()==listFeatures[j].getName()){
 			category = listFeatures[j].getType(); //if there a feature with the same name as the child from a association, the "category" will be set to this relation
 		}
 
 	}
-}
+
 
 	if(category == "alternative"){
 		arrayAlter.push("\n{\"from\":\""+ listAssociation[i].getParentName()+"\", \"to\":\""+listAssociation[i].getChildName() + 
@@ -111,7 +111,7 @@ function declareLink(listAssociation,listFeatures){
     
 	}
 
-
+        }
     
 }
 

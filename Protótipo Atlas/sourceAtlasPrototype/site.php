@@ -30,6 +30,9 @@ $logado = $_SESSION['login'];
     <div class="topBar">
         <input id="modelName" class="modelName" type="text" placeholder="Model name">
         <div class="topBarIconGroup" id="topBarIconGroup">
+             <a onclick="newModel()" href="javascript:void(0);">
+                <span class="tooltip">Create Model</span>
+                <i class="fa fa-file-o"></i> </a>
             <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
                 <span class="tooltip">Load Model</span>
                 <i class="fa fa-upload"></i> </a>
@@ -45,6 +48,9 @@ $logado = $_SESSION['login'];
 
     <!--Top Bar Small Screen < 600 width-->
     <div class="topBarIconGroupSmall" id="topBarIconGroupSmall">
+        <a onclick="newModel()" href="javascript:void(0);">
+                <span class="tooltip">Create Model</span>
+                <i class="fa fa-file-o"></i> </a>
         <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
             <span class="tooltip">Load Model</span>
             <i class="fa fa-upload"></i> </a>
@@ -189,6 +195,8 @@ $logado = $_SESSION['login'];
     <script type="text/javascript" src="./js/CreateAssociationSelectListener.js"></script>
     <script type="text/javascript" src="./js/ValidateScript.js"></script>
     <script type="text/javascript" src="./js/AdjustCanvas.js"></script>
+    <script type="text/javascript" src="./js/NewModelScript.js"></script>
+
 
 
 </body>

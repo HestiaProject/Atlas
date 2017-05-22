@@ -1,4 +1,7 @@
 document.getElementById("loadFileSubmitButton").onclick = function () {
+
+	if(confirm("Do you really want to import a JSON file?\n All unsaved progress will be lost!") == true){
+
     var file = document.getElementById("fileInput").files;
     if (file.length <= 0) {
         return false;
@@ -16,7 +19,7 @@ document.getElementById("loadFileSubmitButton").onclick = function () {
 			document.getElementById('myModel').value = JSON.stringify(m1);
 		}
 		catch(err) {
-			alert("Ivalid Model! Try to upload other .json!");
+			alert("Invalid Model! Try to upload other .json!");
 		}
 	}
 
@@ -24,4 +27,6 @@ document.getElementById("loadFileSubmitButton").onclick = function () {
 
     var createLoadModal = document.getElementById("loadFileModal");
     createLoadModal.style.display = "none";
+}
+
 }

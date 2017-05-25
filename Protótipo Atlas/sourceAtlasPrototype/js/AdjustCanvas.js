@@ -48,11 +48,11 @@
      var top;
      var left;
 
-// topBar
-     top = 66 + 68 + 34 - tooltips[8].clientHeight / 2;
-     tooltips[8].style.top = top + "px";
+// LeftBar Create Association
+     top = 66 + 68 + 34 - tooltips[9].clientHeight / 2;
+     tooltips[9].style.top = top + "px";
 
-// topBar tooltips screen < 600
+// TopBar 
      left = width - ((6 * 57) + (57 / 2) + (tooltips[0].clientHeight / 2));
      tooltips[0].style.left = left + "px";
 

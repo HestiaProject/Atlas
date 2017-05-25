@@ -54,6 +54,18 @@ a {
     outline: 0;
 }
 
+.modelName:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.modelName:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.modelName:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
 
 /*==================================topBarSmall=====================================*/
 

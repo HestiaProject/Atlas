@@ -11,22 +11,20 @@
     <link rel="stylesheet" href="./css/modal.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
-    <?php  
-session_start();
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
-{
-	unset($_SESSION['login']);
-	unset($_SESSION['senha']);
-	header('location:index.php');
-	}
+    <?php
+    session_start();
+    if ((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)) {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('location:index.php');
+    }
 
-$logado = $_SESSION['login'];
-?>
+    $logado = $_SESSION['login'];
+    ?>
 </head>
 
 <body onload="firstLoad()">
-
-    <!--Top Bar-->
+<!--Top Bar-->
     <div class="topBar">
         <input id="modelName" class="modelName" type="text" placeholder="Model name">
         <div class="topBarIconGroup" id="topBarIconGroup">
@@ -46,7 +44,7 @@ $logado = $_SESSION['login'];
     </div>
 
 
-    <!--Top Bar Small Screen < 600 width-->
+<!--Top Bar Small Screen < 600 width-->
     <div class="topBarIconGroupSmall" id="topBarIconGroupSmall">
         <a onclick="newModel()" href="javascript:void(0);">
                 <span class="tooltip">Create Model</span>
@@ -62,7 +60,7 @@ $logado = $_SESSION['login'];
             <i class="fa fa-file-image-o"></i> </a>
     </div>
 
-    <!--Side Bar-->
+<!--Side Bar-->
     <div class="sideBar">
         <div class="sideBarIconGroup">
             <a onclick="createFeatureModalButtonClick();" href="javascript:void(0);">
@@ -77,7 +75,7 @@ $logado = $_SESSION['login'];
         </div>
     </div>
 
-    <!--Create Feature Modal-->
+<!--Create Feature Modal-->
     <div class="modal" id="featureModal">
         <div id="featureModalContent" class="featureModalContent">
             <div class="closeButton">
@@ -91,7 +89,7 @@ $logado = $_SESSION['login'];
         </div>
     </div>
 
-    <!--Create Association Modal-->
+<!--Create Association Modal-->
     <div class="modal" id="associationModal">
         <div id="associationModalContent" class="associationModalContent">
             <div class="closeButton">
@@ -105,7 +103,7 @@ $logado = $_SESSION['login'];
         </div>
     </div>
 
-    <!--Load File Modal-->
+<!--Load File Modal-->
     <div class="modal" id="loadFileModal">
         <div id="loadFileModalContent" class="loadFileModalContent">
             <div class="closeButton">
@@ -117,7 +115,7 @@ $logado = $_SESSION['login'];
         </div>
     </div>
 
-    <!--Canvas-->
+<!--Canvas-->
     <div class="canvas" id="canvas">
         <div id="myDiagramDiv"></div>
         <button id="showJSON" onclick="toggle_visibility('JsonText');">Show/Hide JSON</button>
@@ -131,7 +129,7 @@ $logado = $_SESSION['login'];
         </div>
     </div>
 
-    <!--Initial load-->
+<!--Initial load-->
     <script type="text/javascript">
         var m1;
 
@@ -173,7 +171,7 @@ $logado = $_SESSION['login'];
         }
     </script>
 
-    <!--Load Scripts-->
+<!--Load Scripts-->
     <script type="text/javascript" src="./js/SaveScript.js"></script>
     <script type="text/javascript" src="./js/ModelScript.js"></script>
     <script type="text/javascript" src="./js/FeatureScript.js"></script>

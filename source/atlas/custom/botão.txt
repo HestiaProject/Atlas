@@ -1,7 +1,0 @@
-<a id="btn_set_name" href='#'>Set name</a>
-
-
-
-
-
-           

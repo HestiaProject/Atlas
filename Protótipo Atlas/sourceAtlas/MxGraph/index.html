@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AtlasPrototype</title>
+
+    <script type="text/javascript">
+        mxBasePath = './mxgraph/src';
+    </script>
+
+    <script type="text/javascript" src="./mxgraph/src/js/mxClient.js"></script>
+
+    <link rel="stylesheet" href="./fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+</head>
+
+<body>
+    <!--Top Bar-->
+    <div class="topBar">
+        <input id="modelName" class="modelName" type="text" placeholder="Model name">
+        <div class="topBarIconGroup" id="topBarIconGroup">
+            <a onclick="" href="javascript:void(0);">
+                <span class="tooltip">Create Model</span>
+                <i class="fa fa-file-o"></i> </a>
+            <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
+                <span class="tooltip">Load Model</span>
+                <i class="fa fa-upload"></i> </a>
+            <a onclick="" href="javascript:void(0);">
+                <span class="tooltip">Save as .json</span>
+                <i class="fa fa-save"></i> </a>
+            <a onclick="exportPng()" href="javascript:void(0)">
+                <span class="tooltip">Save as .png</span>
+                <i class="fa fa-file-image-o"></i> </a>
+        </div>
+    </div>
+
+
+    <!--Top Bar Small Screen < 600 width-->
+    <div class="topBarIconGroupSmall" id="topBarIconGroupSmall">
+        <a onclick="newModel()" href="javascript:void(0);">
+            <span class="tooltip">Create Model</span>
+            <i class="fa fa-file-o"></i> </a>
+        <a onclick="createLoadModalButtonClick()" href="javascript:void(0);">
+            <span class="tooltip">Load Model</span>
+            <i class="fa fa-upload"></i> </a>
+        <a onclick="saveAsJson()" href="javascript:void(0);">
+            <span class="tooltip">Save as .json</span>
+            <i class="fa fa-save"></i> </a>
+        <a onclick="exportPng()" href="javascript:void(0)">
+            <span class="tooltip">Save as .png</span>
+            <i class="fa fa-file-image-o"></i> </a>
+    </div>
+
+    <!--Side Bar-->
+    <div class="sideBar">
+        <div class="sideBarIconGroup">           
+            <a class="mxToolbar" title="Rectangle">
+                <span class="tooltip">Create Feature</span>
+                <i class="fa fa-square-o"></i></a>
+            <a onclick="createAssociationModalButtonClick();" href="javascript:void(0);">
+                <span class="tooltip">Create Association</span>
+                <i class="fa fa-arrows-h"></i></a>
+        </div>
+    </div>
+
+    <!--Create Feature Modal-->
+    <div class="modal" id="featureModal">
+        <div id="featureModalContent" class="featureModalContent">
+            <div class="closeButton">
+                <a onclick="closeFeatureModalButtonClick();" href="javascript:void(0);"><i class="fa fa-times"></i></a>
+            </div>
+            <label><b>Feature Name</b></label>
+            <input id="nameFeatureTextField" type="text">
+            <label><b>Feature type</b></label>
+            <select id="featureTypeComboBox"></select>
+            <button id="createFeatureSubmitButton" type="submit">Create</button>
+        </div>
+    </div>
+
+    <!--Create Association Modal-->
+    <div class="modal" id="associationModal">
+        <div id="associationModalContent" class="associationModalContent">
+            <div class="closeButton">
+                <a onclick="closeAssociationModalButtonClick();" href="javascript:void(0);"><i class="fa fa-times"></i></a>
+            </div>
+            <label><b>Parent Feature</b></label>
+            <select id="feature1ComboBox"></select>
+            <label><b>Child Feature</b></label>
+            <select id="feature2ComboBox"></select>
+            <button id="createAssociationSubmitButton" type="submit">Create</button>
+        </div>
+    </div>
+
+    <!--Load File Modal-->
+    <div class="modal" id="loadFileModal">
+        <div id="loadFileModalContent" class="loadFileModalContent">
+            <div class="closeButton">
+                <a onclick="closeFileModalButtonClick();" href="javascript:void(0);"><i class="fa fa-times"></i></a><br/>
+            </div>
+            <label><b>Select File</b></label><br/>
+            <input id="fileInput" type="file" accept=".json" value="select"><br/>
+            <button id="loadFileSubmitButton" type="submit">Import</button>
+        </div>
+    </div>
+
+    <!--Canvas-->
+    <div class="canvas" id="canvas">
+    </div>   
+    		
+
+    <!--Load Scripts-->
+    <script type="text/javascript" src="./js/ModelGraph.js"></script>
+    <script type="text/javascript" src="./js/ModelScript.js"></script>
+    <script type="text/javascript" src="./js/FeatureScript.js"></script>
+    <script type="text/javascript" src="./js/AssociationScript.js"></script>
+    <script type="text/javascript" src="./js/CreateModals.js"></script>
+    <script type="text/javascript" src="./js/CreateFeatureScript.js"></script>
+    <script type="text/javascript" src="./js/LoadFileScript.js"></script>
+    <script type="text/javascript" src="./js/FileNameScript.js"></script>
+    <script type="text/javascript" src="./js/CreateAssociationScript.js"></script>
+    <script type="text/javascript" src="./js/CloseModalsScript.js"></script>    
+    <script type="text/javascript" src="./js/AdjustCanvas.js"></script>
+    <script type="text/javascript" src="./mxgraph/src/js/mxClient.js"></script>    
+    <script type="text/javascript" src="./js/main.js"></script> 
+
+
+</body>
+
+</html>

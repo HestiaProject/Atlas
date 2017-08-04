@@ -1,0 +1,83 @@
+/*==================================generic==================================*/
+
+.modal {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 5;
+}
+
+select {
+    width: 170px;
+    margin: 10px;
+    padding: 3px;
+}
+
+.modal input {
+    margin: 10px;
+    padding: 3px;
+    width: 160px;
+}
+
+.closeButton {
+    text-align: right;
+    padding-bottom: 30px;
+    font-size: 22px;
+    left: 22px;
+}
+
+
+/*==================================Feature==================================*/
+
+.featureModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #222222;
+    width: 198px;
+    height: 100%;
+    font-family: Verdana;
+    color: #fff;
+}
+
+
+/*==================================Association==================================*/
+
+.associationModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #222222;
+    width: 198px;
+    height: 100%;
+    font-family: Verdana;
+    color: #fff;
+}
+
+
+/*==================================File==================================*/
+
+.loadFileModalContent {
+    display: block;
+    text-align: center;
+    position: fixed;
+    background-color: #104581;
+    width: 100%;
+    height: 130px;
+    font-family: Verdana;
+    color: #fff;
+}
+
+.loadFileModalContent input{
+    width: auto;
+    border-style: solid;
+}
+
+.loadFileModalContent .closeButton {
+    
+    top: 0;
+    text-align: right;
+    padding-bottom: 0px;
+}
